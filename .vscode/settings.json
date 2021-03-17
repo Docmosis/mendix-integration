@@ -1,0 +1,25 @@
+{
+    "cSpell.words": [
+        "Docmosis",
+        "HashiCorp",
+        "Mendix",
+        "microflow",
+        "microflows"
+    ],
+    "[markdown]": {
+        // Markdown settings inspired by https://solomon.io/better-markdown-visual-studio-code/
+        "editor.fontFamily": "\"IA Writer Duo S\", monospace",
+        "editor.fontLigatures": true,
+        "editor.fontSize": 16,
+        "editor.lineHeight": 26,
+        "editor.wordWrap": "wordWrapColumn",
+        "editor.wordWrapColumn": 64,
+        "editor.lineNumbers": "off",
+        "editor.quickSuggestions": false,
+        "editor.defaultFormatter": "yzhang.markdown-all-in-one",
+        "editor.minimap.enabled": false,
+    },
+    "markdown.preview.fontFamily": "\"IA Writer Duo S\", monospace",
+    "markdown.preview.lineHeight": 1.8,
+    "markdown.extension.toc.levels": "2..3",
+}
