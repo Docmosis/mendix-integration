@@ -21,6 +21,18 @@ public class Microflows
 		params.put("TemplateStructure", _templateStructure == null ? null : _templateStructure.getMendixObject());
 		Core.microflowCall("DocmosisCloudImplementation.Act_TemplateStructure_Generate").withParams(params).execute(context);
 	}
+	public static docmosiscloudimplementation.proxies.API aPI_GetForCurrentSession(IContext context)
+	{
+		Map<java.lang.String, Object> params = new HashMap<>();
+		IMendixObject result = (IMendixObject)Core.microflowCall("DocmosisCloudImplementation.API_GetForCurrentSession").withParams(params).execute(context);
+		return result == null ? null : docmosiscloudimplementation.proxies.API.initialize(context, result);
+	}
+	public static docmosiscloudimplementation.proxies.API dS_API(IContext context)
+	{
+		Map<java.lang.String, Object> params = new HashMap<>();
+		IMendixObject result = (IMendixObject)Core.microflowCall("DocmosisCloudImplementation.DS_API").withParams(params).execute(context);
+		return result == null ? null : docmosiscloudimplementation.proxies.API.initialize(context, result);
+	}
 	public static docmosiscloudimplementation.proxies.TemplateStructure dS_TemplateStructure_Create(IContext context)
 	{
 		Map<java.lang.String, Object> params = new HashMap<>();

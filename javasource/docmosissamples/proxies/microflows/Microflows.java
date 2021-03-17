@@ -14,6 +14,11 @@ import com.mendix.systemwideinterfaces.core.IContext;
 public class Microflows
 {
 	// These are the microflows for the DocmosisSamples module
+	public static void act_Home(IContext context)
+	{
+		Map<java.lang.String, Object> params = new HashMap<>();
+		Core.microflowCall("DocmosisSamples.Act_Home").withParams(params).execute(context);
+	}
 	public static void act_Invoice_RenderPDF(IContext context, docmosissamples.proxies.Invoice _invoice)
 	{
 		Map<java.lang.String, Object> params = new HashMap<>();
