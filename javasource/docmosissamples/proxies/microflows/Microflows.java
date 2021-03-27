@@ -10,6 +10,7 @@ import com.mendix.core.Core;
 import com.mendix.core.CoreException;
 import com.mendix.systemwideinterfaces.MendixRuntimeException;
 import com.mendix.systemwideinterfaces.core.IContext;
+import com.mendix.systemwideinterfaces.core.IMendixObject;
 
 public class Microflows
 {
@@ -30,5 +31,18 @@ public class Microflows
 		Map<java.lang.String, Object> params = new HashMap<>();
 		params.put("InvoiceLine", _invoiceLine == null ? null : _invoiceLine.getMendixObject());
 		return (java.lang.Boolean) Core.microflowCall("DocmosisSamples.BCo_InvoiceLine").withParams(params).execute(context);
+	}
+	public static java.lang.String invoice_CreateInvoiceData(IContext context, docmosissamples.proxies.Invoice _invoice)
+	{
+		Map<java.lang.String, Object> params = new HashMap<>();
+		params.put("Invoice", _invoice == null ? null : _invoice.getMendixObject());
+		return (java.lang.String) Core.microflowCall("DocmosisSamples.Invoice_CreateInvoiceData").withParams(params).execute(context);
+	}
+	public static docmosiscloud.proxies.RenderResponse invoice_CreatePDF(IContext context, docmosissamples.proxies.Invoice _invoice)
+	{
+		Map<java.lang.String, Object> params = new HashMap<>();
+		params.put("Invoice", _invoice == null ? null : _invoice.getMendixObject());
+		IMendixObject result = (IMendixObject)Core.microflowCall("DocmosisSamples.Invoice_CreatePDF").withParams(params).execute(context);
+		return result == null ? null : docmosiscloud.proxies.RenderResponse.initialize(context, result);
 	}
 }

@@ -15,11 +15,17 @@ import com.mendix.systemwideinterfaces.core.IMendixObject;
 public class Microflows
 {
 	// These are the microflows for the DocmosisCloudImplementation module
-	public static void act_TemplateStructure_Generate(IContext context, docmosiscloudimplementation.proxies.TemplateStructure _templateStructure)
+	public static void act_RenderDevMode_Generate(IContext context, docmosiscloudimplementation.proxies.RenderDevMode _renderDevMode)
 	{
 		Map<java.lang.String, Object> params = new HashMap<>();
-		params.put("TemplateStructure", _templateStructure == null ? null : _templateStructure.getMendixObject());
-		Core.microflowCall("DocmosisCloudImplementation.Act_TemplateStructure_Generate").withParams(params).execute(context);
+		params.put("RenderDevMode", _renderDevMode == null ? null : _renderDevMode.getMendixObject());
+		Core.microflowCall("DocmosisCloudImplementation.Act_RenderDevMode_Generate").withParams(params).execute(context);
+	}
+	public static void act_TemplateJSONStructure_Generate(IContext context, docmosiscloudimplementation.proxies.TemplateJSONStructure _templateJSONStructure)
+	{
+		Map<java.lang.String, Object> params = new HashMap<>();
+		params.put("TemplateJSONStructure", _templateJSONStructure == null ? null : _templateJSONStructure.getMendixObject());
+		Core.microflowCall("DocmosisCloudImplementation.Act_TemplateJSONStructure_Generate").withParams(params).execute(context);
 	}
 	public static docmosiscloudimplementation.proxies.API aPI_GetForCurrentSession(IContext context)
 	{
@@ -33,23 +39,23 @@ public class Microflows
 		IMendixObject result = (IMendixObject)Core.microflowCall("DocmosisCloudImplementation.DS_API").withParams(params).execute(context);
 		return result == null ? null : docmosiscloudimplementation.proxies.API.initialize(context, result);
 	}
-	public static docmosiscloudimplementation.proxies.TemplateStructure dS_TemplateStructure_Create(IContext context)
+	public static docmosiscloudimplementation.proxies.RenderDevMode dS_RenderDevMode_Create(IContext context)
 	{
 		Map<java.lang.String, Object> params = new HashMap<>();
-		IMendixObject result = (IMendixObject)Core.microflowCall("DocmosisCloudImplementation.DS_TemplateStructure_Create").withParams(params).execute(context);
-		return result == null ? null : docmosiscloudimplementation.proxies.TemplateStructure.initialize(context, result);
+		IMendixObject result = (IMendixObject)Core.microflowCall("DocmosisCloudImplementation.DS_RenderDevMode_Create").withParams(params).execute(context);
+		return result == null ? null : docmosiscloudimplementation.proxies.RenderDevMode.initialize(context, result);
 	}
-	public static java.lang.String invoice_CreateInvoiceData(IContext context, docmosissamples.proxies.Invoice _invoice)
+	public static docmosiscloudimplementation.proxies.TemplateJSONStructure dS_TemplateJSONStructure_Create(IContext context)
 	{
 		Map<java.lang.String, Object> params = new HashMap<>();
-		params.put("Invoice", _invoice == null ? null : _invoice.getMendixObject());
-		return (java.lang.String) Core.microflowCall("DocmosisCloudImplementation.Invoice_CreateInvoiceData").withParams(params).execute(context);
+		IMendixObject result = (IMendixObject)Core.microflowCall("DocmosisCloudImplementation.DS_TemplateJSONStructure_Create").withParams(params).execute(context);
+		return result == null ? null : docmosiscloudimplementation.proxies.TemplateJSONStructure.initialize(context, result);
 	}
-	public static docmosiscloud.proxies.RenderResponse invoice_CreatePDF(IContext context, docmosissamples.proxies.Invoice _invoice)
+	public static docmosiscloud.proxies.RenderResponse renderDevMode_Generate(IContext context, java.lang.String _templateName)
 	{
 		Map<java.lang.String, Object> params = new HashMap<>();
-		params.put("Invoice", _invoice == null ? null : _invoice.getMendixObject());
-		IMendixObject result = (IMendixObject)Core.microflowCall("DocmosisCloudImplementation.Invoice_CreatePDF").withParams(params).execute(context);
+		params.put("TemplateName", _templateName);
+		IMendixObject result = (IMendixObject)Core.microflowCall("DocmosisCloudImplementation.RenderDevMode_Generate").withParams(params).execute(context);
 		return result == null ? null : docmosiscloud.proxies.RenderResponse.initialize(context, result);
 	}
 	public static java.lang.String response_FormatMessage(IContext context, docmosiscloud.proxies.Response _response)
@@ -79,11 +85,11 @@ public class Microflows
 		params.put("Message", _message);
 		Core.microflowCall("DocmosisCloudImplementation.Response_ProcessError").withParams(params).execute(context);
 	}
-	public static docmosiscloud.proxies.GetSampleDataResponse templateStructure_Generate(IContext context, java.lang.String _templateName)
+	public static docmosiscloud.proxies.GetSampleDataResponse templateJSONStructure_Generate(IContext context, java.lang.String _templateName)
 	{
 		Map<java.lang.String, Object> params = new HashMap<>();
 		params.put("TemplateName", _templateName);
-		IMendixObject result = (IMendixObject)Core.microflowCall("DocmosisCloudImplementation.TemplateStructure_Generate").withParams(params).execute(context);
+		IMendixObject result = (IMendixObject)Core.microflowCall("DocmosisCloudImplementation.TemplateJSONStructure_Generate").withParams(params).execute(context);
 		return result == null ? null : docmosiscloud.proxies.GetSampleDataResponse.initialize(context, result);
 	}
 }
