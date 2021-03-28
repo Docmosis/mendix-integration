@@ -25,6 +25,8 @@ The module is a wrapper around the Docmosis web services. This are the actions i
 2. **Execute the request:** The data is transformed to a proper web service request and send to Docmosis. The response is interpreted and in case of an error details of the error are stored in the response.
 3. **Interpret the response:** In case of a successful execution the response contains the requested data. See the [Docmosis Cloud DWS3 Web Services Guide](https://resources.docmosis.com/content/documentation/cloud-dws3-web-services-guide) for details and examples. In case of an error you will find error details, see [paragraph Generic response object attributes](#generic-response-object-attributes).
 
+> In case of errors or other unforeseen events the module does not log errors or show messages to the user. It is up to your app to decide what to do.
+
 ## Create a template
 
 Before you can actually render documents you have to create a template. See the [Docmosis resources website](https://resources.docmosis.com) and in particular the [DWS3 Template Guide](https://resources.docmosis.com/content/documentation/cloud-dws3-template-guide) how to create a template.
@@ -33,7 +35,7 @@ Use Docmosis Cloud Console to upload the template.
 
 ## Generate the data structure in your app
 
-In your app you have to collect all required data and structure that in such a way that it is compatible with the template you created. The module offers a function that supports you in generating a non-persistent data structure.
+In your app you have to collect all required data and structure it in such a way that it is compatible with the template you created. The module offers a function that supports you in generating a non-persistent data structure.
 
 In case you want to create the structure manually then you can skip the remainder of this paragraph. Otherwise continue reading and the [example app](example-app.md) shows how you can use it yourself.
 
@@ -127,10 +129,10 @@ Every response has these attributes:
 
 - `Result`: an enumeration specifying the overall result
   - `Success`: the happy flow
-  - `Error`: the web service request succeeded, but there was an issue with the template, data or otherwise
-  - `Exception`: the web service request failed
+  - `Error`: the web service request succeeded (HTTP status code 2xx), but there was an issue with the template, data or otherwise
+  - `Exception`: the web service request failed and generated an exception
 - `ShortMessage` and `LongMessage`
-  - these attributes are set by Docmosis and contain feedback, so likely then the request was not successful
+  - these attributes are set by Docmosis and contain feedback
 - `RequestID`: copied from the request object, see [Generic request object attributes](#generic-request-object-attributes)
-- `Http`: Http response details like the request URL used and technical details returned by the Docmosis Cloud; this is helpful in troubleshooting errors
-- `Exception`: in case `Result=Exception` here you will find Mendix exception details, copied from `$latestError` so similar to the `System.Error` entity
+- `Http`: Http response details like the request URL used and technical details returned by Docmosis
+- `Exception`: in case `Result=Exception` here you will find Mendix exception details, copied from the `$latestError` object

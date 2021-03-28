@@ -23,4 +23,7 @@
     "markdown.preview.fontFamily": "\"IA Writer Duo S\", monospace",
     "markdown.preview.lineHeight": 1.8,
     "markdown.extension.toc.levels": "2..3",
+    "markdownlint.config": {
+        "MD033": false
+    },
 }
