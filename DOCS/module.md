@@ -1,6 +1,6 @@
 # The module
 
-<h2>Table of contents</h2>
+## Table of contents
 
 - [Requirements](#requirements)
 - [Terminology and process](#terminology-and-process)
@@ -15,29 +15,33 @@
 
 The module can be imported in an app on [Mendix Studio Pro 8.12.5 or later](https://marketplace.mendix.com/link/studiopro/). That makes it compatible with Mendix 9 and in [version 8.12.5](https://docs.mendix.com/releasenotes/studio-pro/8.12#8125) a major security fix was implemented.
 
-And it depends on Marketplace module [CommunityCommons](https://appstore.home.mendix.com/link/app/170/Mendix/Community-Commons-Function-Library).
+## Dependencies
 
-## Terminology and process
+- [Community Commons](https://appstore.home.mendix.com/link/app/170/Mendix/Community-Commons-Function-Library).
 
-The module is a wrapper around the Docmosis web services. This are the actions in your microflow:
+## Terminology and Process
 
-1. **Prepare the request:** This results in an pre-populated object where you can make additional adjustments. See the [Docmosis Cloud DWS3 Web Services Guide](https://resources.docmosis.com/content/documentation/cloud-dws3-web-services-guide) for details and examples.
-2. **Execute the request:** The data is transformed to a proper web service request and send to Docmosis. The response is interpreted and in case of an error details of the error are stored in the response.
-3. **Interpret the response:** In case of a successful execution the response contains the requested data. See the [Docmosis Cloud DWS3 Web Services Guide](https://resources.docmosis.com/content/documentation/cloud-dws3-web-services-guide) for details and examples. In case of an error you will find error details, see [paragraph Generic response object attributes](#generic-response-object-attributes).
+The module is a wrapper around the calls to the Docmosis Cloud API. These are the actions in your microflow:
 
-> In case of errors or other unforeseen events the module does not log errors or show messages to the user. It is up to your app to decide what to do.
+1. **Prepare the request:** Create a pre-populated object where you can make additional adjustments.
+2. **Execute the request:** The data is transformed to a web service request and sent to Docmosis. The response is interpreted and in case of an error details of the error are stored in the response.
+3. **Process the response:** Extract the document and handle errors. In case of an error you will find error details, see [paragraph Generic response object attributes](#generic-response-object-attributes).
 
-## Create a template
+The main API endpoint used for generating documents is `/render`. For full details of the Docmosis Cloud API, refer to the [Docmosis Cloud DWS3 Web Services Guide](https://resources.docmosis.com/content/documentation/cloud-dws3-web-services-guide) for details and examples.
 
-Before you can actually render documents you have to create a template. See the [Docmosis resources website](https://resources.docmosis.com) and in particular the [DWS3 Template Guide](https://resources.docmosis.com/content/documentation/cloud-dws3-template-guide) how to create a template.
+> In case of errors or other unforeseen events this module does not log errors or show messages to the user. It is up to your app to decide what to do.
+
+## Create a Template
+
+Before you can render documents you will need to create a Docmosis template.  Your Docmosis Cloud Account will contain some example templates.  You can also refer to the [Docmosis Resources Website](https://resources.docmosis.com) for more examples and in particular the [DWS3 Template Guide](https://resources.docmosis.com/content/documentation/cloud-dws3-template-guide) for detailed templating information.
 
 Use Docmosis Cloud Console to upload the template.
 
-## Generate the data structure in your app
+## Generate The Data Structure In Your App
 
-In your app you have to collect all required data and structure it in such a way that it is compatible with the template you created. The module offers a function that supports you in generating a non-persistent data structure.
+In your app you have to collect all required data and structure it in such a way that it is compatible with the template you created. The module includes a utility that supports you in generating a non-persistent example data structure based on your template.
 
-In case you want to create the structure manually then you can skip the remainder of this paragraph. Otherwise continue reading and the [example app](example-app.md) shows how you can use it yourself.
+If you want to create the structure manually then you can skip the remainder of this paragraph. Otherwise continue reading to see how the example data utility works.  The [example app](example-app.md) shows it in operation.
 
 <img align="right" src="assets/getsampledata-microflows.png" alt="GetSampleData microflows">
 
@@ -48,27 +52,27 @@ First initialize the request using microflow `GetSampleDataRequest_Initialize`:
 
 It returns an object of type `GetSampleDataRequest`. By default the data structure with sample data is returned as JSON, but if you prefer XML then change attribute `GetSampleDataRequest.Format` after initialization of the request object.
 
-Next call microflow `CWS_GetSampleData` to lookup the structure and return it. A `GetSampleDataResponse` object is returned which contains the requested structure information in attribute `GetSampleDataResponse.TemplateSampleData`.
+Next call the microflow `CWS_GetSampleData` to lookup the structure and return it. A `GetSampleDataResponse` object is returned which contains the requested structure information in attribute `GetSampleDataResponse.TemplateSampleData`.
 
-Now you have a JSON or XML string that you can use in your app model to 1) create a [JSON Structure](https://docs.mendix.com/refguide/json-structures) or [XML Schema](https://docs.mendix.com/refguide/xml-schemas) document, 2) create an [export mapping](https://docs.mendix.com/refguide/export-mappings) and 3) [generate entities and associations](https://docs.mendix.com/refguide/map-automatically) that match the export mapping. Eventually tweak and tune the entities and associations, for example the naming of the entities.
+Now you have a JSON or XML string that you can use in your app model to 1) create a [JSON Structure](https://docs.mendix.com/refguide/json-structures) or [XML Schema](https://docs.mendix.com/refguide/xml-schemas), 2) create an [export mapping](https://docs.mendix.com/refguide/export-mappings) and 3) [generate entities and associations](https://docs.mendix.com/refguide/map-automatically) that match the export mapping. Lastly, you may need to tweak the entities and associations, for example the naming of the entities.
 
-All you have to do is copy/transform your app's data to this new data structure and use that in the [render process](#render-the-document).
+You can then copy/transform your app's data to this new data structure and use that in the [render process](#render-the-document).
 
-## Render the document
+## Render The Document
 
-Assuming you have a template and data then you can render the document.
+Once you have a template and a matching data structure then you can render the document.
 
 First initialize the request using microflow `RenderRequest_Initialize`:
 
 - **TemplateName**: path and name of the template to use, for example *samples/InvoiceTemplate.docx*
-- **OutputName**: name of the rendered document where the file extension tells Docmosis what type of document to generate, for example *invoice-21I000388.pdf*
+- **OutputName**: name of the rendered document, for example *invoice-21I000388.pdf*.  Docmosis will use the file extension to determine the format of document to generate, in this case *pdf*, 
 - common parameters are [documented here](#common-request-initialization-parameters)
 
 <img align="right" src="assets/render-microflows.png" alt="Render microflows">
 
-It returns an object of type `RenderRequest` and when needed the attribute values can be adjusted. In [Docmosis Cloud DWS3 Web Services Guide chapter 2.4](https://resources.docmosis.com/content/documentation/cloud-dws3-web-services-guide) you will find a detailed explanation of all attributes.
+It returns an object of type `RenderRequest` and when needed the attribute values can be adjusted. In [Docmosis Cloud DWS3 Web Services Guide](https://resources.docmosis.com/content/documentation/cloud-dws3-web-services-guide) chapter 2.4 you will find a detailed explanation of all attributes.
 
-It is extremely flexible and powerful, so to help you get started quickly here are some common use cases:
+It is extremely flexible and powerful. To help you get started quickly here are some common use cases:
 
 - (Default behavior) Render the document and return it to your app
   - `StoreTo=stream` - return the rendered document to the app
@@ -89,27 +93,27 @@ It is extremely flexible and powerful, so to help you get started quickly here a
 > Attribute `StreamResultInResponse` is enforced to `true` for module implementation reasons. Changing it yourself will not change the behavior.
 > Attribute `Data` will be populated with your data. Any data you put in here will be overwritten. See the next paragraph for details.
 
-The next step is equally or maybe even more important: the data to be merged with the template. Your app has to generate a JSON string that matches the template. So typically that is a flow that involves data retrieval, creating one or more non-persistent objects and export it to JSON; see also paragraph [Generate the data structure in your app](#generate-the-data-structure-in-your-app). As that is completely specific to your app exact details cannot be given here. The [example app](DOCS/example-app.md) can be used as inspiration if you are new to this.
+The next step is equally or maybe even more important: the data to be merged with the template. Your app has to generate a JSON string that matches the template. Typically that is a flow that involves data retrieval, creating one or more non-persistent objects and export it to JSON; see also paragraph [Generate the data structure in your app](#generate-the-data-structure-in-your-app). As that is completely specific to your app exact details cannot be given here. The [example app](DOCS/example-app.md) can be used as a guide.
 
 When the `RenderRequest` object is set as required and a string with JSON data is available then call microflow `CWS_Render` to render the document.
 
-The `RenderResponse` object returned contains the rendered document in [Base64](https://en.wikipedia.org/wiki/Base64) format in attribute `RenderResponse.Base64File`. You can use microflow `FileDocument_Base64Decode` to decode it to a [specialized `System.FileDocument`](https://docs.mendix.com/howto/data-models/working-with-images-and-files#4-file-documents) object, or process it otherwise that fits your need. And see also [Generic response object attributes](#generic-response-object-attributes) for an explanation of the other attributes and what to do in case of an error.
+The `RenderResponse` object returned contains the rendered document in Base64 format in the attribute `RenderResponse.Base64File`. You can use microflow `FileDocument_Base64Decode` to decode it to a [specialized `System.FileDocument`](https://docs.mendix.com/howto/data-models/working-with-images-and-files#4-file-documents) object, or process it as meets your needs. Also see [Generic response object attributes](#generic-response-object-attributes) for an explanation of the other attributes and what to do in the case of an error.
 
-> The document is returned as [Base64](https://en.wikipedia.org/wiki/Base64), which is different from default Docmosis behavior. This is an explicit characteristic of the module to be able to return a consistent type of response.
+> The document is returned as [Base64](https://en.wikipedia.org/wiki/Base64) (enforced by `StreamResultInResponse` mentioned above), which is different from default Docmosis behavior. This is an explicit characteristic of this module to be able to return a consistent type of response.
 
 ## Common request initialization parameters
 
 Most, if not all, request initialization microflows have these parameters in common:
 
-- `APIAccessKey`: your Docmosis access key, see Docmosis Cloud Console for the access key
+- `APIAccessKey`: your Docmosis access key, see the Docmosis Cloud Console [Accounts Page](https://console.dws3.docmosis.com/console/index.html#account) for the access key
   - When empty then the value of constant `@DocmosisCloud.APIAccessKey` is used
-- `APIEndPoint`: the Docmosis Cloud API endpoint, see Docmosis Cloud Console for the available endpoints
+- `APIEndPoint`: the Docmosis Cloud API endpoint, see the Accounts Page for the available endpoints.  Your templates will be uploaded and exist in one specific geo region, so you must use the matching endpoint when generating documents.
   - When empty then the value of constant `@DocmosisCloud.APIEndpoint` is used
 
-Why would you specify another access key or endpoint than stored in the constants? Here are two use cases that cannot be implemented if the module relied on the constants:
+Usually the access key or endpoint stored in the constants will be sufficient, however here are examples where you may choose to override the constants:
 
-1. your multi-tenant app allow tenants to specify their own keys and end points to be used
-2. the access key is stored in a centralized configuration vault, for example [HashiCorp Vault](https://www.vaultproject.io), and the key is retrieved on runtime and not set on deployment
+1. your multi-tenant app allows tenants to specify their own keys and endpoints to be used
+2. the access key is stored in a centralized configuration vault, for example [HashiCorp Vault](https://www.vaultproject.io), and the key is retrieved at runtime and not set on deployment
 
 ## Generic request object attributes
 
@@ -128,7 +132,7 @@ Every response has these attributes:
 <img align="right" src="assets/response-entity.png" alt="Response entity">
 
 - `Result`: an enumeration specifying the overall result
-  - `Success`: the happy flow
+  - `Success`: the desired and usual result
   - `Error`: the web service request succeeded (HTTP status code 2xx), but there was an issue with the template, data or otherwise
   - `Exception`: the web service request failed and generated an exception
 - `ShortMessage` and `LongMessage`

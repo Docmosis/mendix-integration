@@ -1,4 +1,4 @@
-# Example app
+# Example App
 
 <h2>Table of contents</h2>
 
@@ -8,17 +8,17 @@
 
 ## Introduction
 
-The example app is used to test the DocmosisCloud module. Therefor it can be used by you to see how you can implement the module in your own app.
+The example app can be used to understand the DocmosisCloud module. It may assist you with ideas of how to implement the module in your own app.
 
-## Where to find the app
+## Where to find the Example App
 
 Download the [latest version as zip file](https://github.com/Docmosis/mendix-integration/archive/main.zip) or use git to clone it from the [GitHub repository](https://github.com/Docmosis/mendix-integration).
 
-If you want to run the app then open it in Mendix Studio Pro and in the profile update the two DocmosisCloud module constants with your access key and end point. Or start the app and enter the access key on the home page in the appropriate field.
+To run the app, open it in Mendix Studio Pro and in the profile update the two DocmosisCloud module constants with your Docmosis Cloud access key and endpoint. Or start the app and enter the access key on the home page in the appropriate field.
 
 > ATTENTION: This example app exposes the API access key visually. So when you want to hide it then remove the field(s) from the app's home page.
 
-## What is in the app
+## What is in the Example App
 
 These modules are in the app:
 
