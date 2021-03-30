@@ -27,6 +27,8 @@ The module handles all web service complexity so you don't have to be an expert 
 
 In the [GitHub repository](https://github.com/Docmosis/mendix-integration) you will find a project with some showcases and feel free to copy it to your own project or use it as inspiration. The author of the module uses it to test the module.
 
+The module depends on module [Community Commons](https://github.com/Docmosis/mendix-integration/blob/main/DOCS/module.md#dependencies).
+
 ## Where to go next?
 
 [How to use the module](https://github.com/Docmosis/mendix-integration/blob/main/DOCS/module.md)
