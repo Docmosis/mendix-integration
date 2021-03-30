@@ -7,10 +7,13 @@ This module simplifies generating documents from your Mendix app by using the [D
 You will need [a Docmosis Cloud Account](https://www.docmosis.com/products/cloud/try.html) to use this module.
 
 ## Processing Locations
+
 You have complete control over where your templates are stored and where processing occurs.  Choose from [processing locations in the USA, EU and Asia/Pacific regions](https://www.docmosis.com/products/cloud/processing-locations.html) to ensure low latency and geo-bound processing.
 
 ## Security and Reliability
+
 We understand that Security and Reliability are essential.  Below is a summary of our [Cloud Security Measures](https://www.docmosis.com/products/cloud/security-measures.html):
+
 - Load balanced, high-performance, redundant, geographically distributed and monitored 24/7.
 - Over 99.99% uptime consistently for over 7 years.
 - All communication with the Docmosis Cloud is SSL encrypted and templates and other uploaded content are stored encrypted at rest.
@@ -26,9 +29,9 @@ In the [GitHub repository](https://github.com/Docmosis/mendix-integration) you w
 
 ## Where to go next?
 
-[How to use the module](DOCS/module.md)
+[How to use the module](https://github.com/Docmosis/mendix-integration/blob/main/DOCS/module.md)
 
-[What is in the example app](DOCS/example-app.md)
+[What is in the example app](https://github.com/Docmosis/mendix-integration/blob/main/DOCS/example-app.md)
 
 ## Support
 
