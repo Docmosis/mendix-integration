@@ -1,12 +1,13 @@
 # The module
 
-## Table of contents
+<h2>Table of contents</h2>
 
 - [Requirements](#requirements)
-- [Terminology and process](#terminology-and-process)
-- [Create a template](#create-a-template)
-- [Generate the data structure in your app](#generate-the-data-structure-in-your-app)
-- [Render the document](#render-the-document)
+- [Dependencies](#dependencies)
+- [Terminology and Process](#terminology-and-process)
+- [Create a Template](#create-a-template)
+- [Generate The Data Structure In Your App](#generate-the-data-structure-in-your-app)
+- [Render The Document](#render-the-document)
 - [Common request initialization parameters](#common-request-initialization-parameters)
 - [Generic request object attributes](#generic-request-object-attributes)
 - [Generic response object attributes](#generic-response-object-attributes)
@@ -65,7 +66,7 @@ Once you have a template and a matching data structure then you can render the d
 First initialize the request using microflow `RenderRequest_Initialize`:
 
 - **TemplateName**: path and name of the template to use, for example *samples/InvoiceTemplate.docx*
-- **OutputName**: name of the rendered document, for example *invoice-21I000388.pdf*.  Docmosis will use the file extension to determine the format of document to generate, in this case *pdf*, 
+- **OutputName**: name of the rendered document, for example *invoice-21I000388.pdf*.  Docmosis will use the file extension to determine the format of document to generate, in this case *pdf*,
 - common parameters are [documented here](#common-request-initialization-parameters)
 
 <img align="right" src="assets/render-microflows.png" alt="Render microflows">

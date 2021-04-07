@@ -3,8 +3,8 @@
 <h2>Table of contents</h2>
 
 - [Introduction](#introduction)
-- [Where to find the app](#where-to-find-the-app)
-- [What is in the app](#what-is-in-the-app)
+- [Where to find the Example App](#where-to-find-the-example-app)
+- [What is in the Example App](#what-is-in-the-example-app)
 
 ## Introduction
 
