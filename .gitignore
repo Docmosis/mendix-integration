@@ -1,0 +1,14 @@
+.classpath
+.mendix-cache
+.project
+*.launch
+*.mpr.bak
+*.mpr.lock
+deployment
+GPUCache
+Gulpfile.js
+modeler-merge-marker
+node_modules
+package-lock.json
+package.json
+project-settings.user.json
