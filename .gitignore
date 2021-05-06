@@ -1,3 +1,4 @@
+# From Mendix svnignore
 .classpath
 .mendix-cache
 .project
@@ -6,9 +7,11 @@
 *.mpr.lock
 deployment
 GPUCache
-Gulpfile.js
 modeler-merge-marker
+project-settings.user.json
+
+# Mendix 8 Gulp styling
+Gulpfile.js
 node_modules
 package-lock.json
 package.json
-project-settings.user.json
