@@ -24,7 +24,7 @@ public class Http
 		Code("Code"),
 		Reason("Reason");
 
-		private java.lang.String metaName;
+		private final java.lang.String metaName;
 
 		MemberNames(java.lang.String s)
 		{
@@ -40,15 +40,17 @@ public class Http
 
 	public Http(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		this(context, com.mendix.core.Core.instantiate(context, "DocmosisCloud.Http"));
+		this(context, com.mendix.core.Core.instantiate(context, entityName));
 	}
 
 	protected Http(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixObject httpMendixObject)
 	{
-		if (httpMendixObject == null)
+		if (httpMendixObject == null) {
 			throw new java.lang.IllegalArgumentException("The given object cannot be null.");
-		if (!com.mendix.core.Core.isSubClassOf("DocmosisCloud.Http", httpMendixObject.getType()))
-			throw new java.lang.IllegalArgumentException("The given object is not a DocmosisCloud.Http");
+		}
+		if (!com.mendix.core.Core.isSubClassOf(entityName, httpMendixObject.getType())) {
+			throw new java.lang.IllegalArgumentException(String.format("The given object is not a %s", entityName));
+		}	
 
 		this.httpMendixObject = httpMendixObject;
 		this.context = context;
@@ -66,6 +68,9 @@ public class Http
 	/**
 	 * Initialize a proxy using context (recommended). This context will be used for security checking when the get- and set-methods without context parameters are called.
 	 * The get- and set-methods with context parameter should be used when for instance sudo access is necessary (IContext.createSudoClone() can be used to obtain sudo access).
+	 * @param context The context to be used
+	 * @param mendixObject The Mendix object for the new instance
+	 * @return a new instance of this proxy class
 	 */
 	public static docmosiscloud.proxies.Http initialize(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixObject mendixObject)
 	{
@@ -80,6 +85,7 @@ public class Http
 
 	/**
 	 * Commit the changes made on this proxy object.
+	 * @throws com.mendix.core.CoreException
 	 */
 	public final void commit() throws com.mendix.core.CoreException
 	{
@@ -88,6 +94,7 @@ public class Http
 
 	/**
 	 * Commit the changes made on this proxy object using the specified context.
+	 * @throws com.mendix.core.CoreException
 	 */
 	public final void commit(com.mendix.systemwideinterfaces.core.IContext context) throws com.mendix.core.CoreException
 	{
@@ -236,9 +243,9 @@ public class Http
 	@java.lang.Override
 	public boolean equals(Object obj)
 	{
-		if (obj == this)
+		if (obj == this) {
 			return true;
-
+		}
 		if (obj != null && getClass().equals(obj.getClass()))
 		{
 			final docmosiscloud.proxies.Http that = (docmosiscloud.proxies.Http) obj;
@@ -258,7 +265,7 @@ public class Http
 	 */
 	public static java.lang.String getType()
 	{
-		return "DocmosisCloud.Http";
+		return entityName;
 	}
 
 	/**

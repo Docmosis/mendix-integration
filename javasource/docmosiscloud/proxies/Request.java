@@ -24,7 +24,7 @@ public class Request
 		APIEndPoint("APIEndPoint"),
 		RequestID("RequestID");
 
-		private java.lang.String metaName;
+		private final java.lang.String metaName;
 
 		MemberNames(java.lang.String s)
 		{
@@ -40,15 +40,17 @@ public class Request
 
 	public Request(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		this(context, com.mendix.core.Core.instantiate(context, "DocmosisCloud.Request"));
+		this(context, com.mendix.core.Core.instantiate(context, entityName));
 	}
 
 	protected Request(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixObject requestMendixObject)
 	{
-		if (requestMendixObject == null)
+		if (requestMendixObject == null) {
 			throw new java.lang.IllegalArgumentException("The given object cannot be null.");
-		if (!com.mendix.core.Core.isSubClassOf("DocmosisCloud.Request", requestMendixObject.getType()))
-			throw new java.lang.IllegalArgumentException("The given object is not a DocmosisCloud.Request");
+		}
+		if (!com.mendix.core.Core.isSubClassOf(entityName, requestMendixObject.getType())) {
+			throw new java.lang.IllegalArgumentException(String.format("The given object is not a %s", entityName));
+		}	
 
 		this.requestMendixObject = requestMendixObject;
 		this.context = context;
@@ -66,15 +68,18 @@ public class Request
 	/**
 	 * Initialize a proxy using context (recommended). This context will be used for security checking when the get- and set-methods without context parameters are called.
 	 * The get- and set-methods with context parameter should be used when for instance sudo access is necessary (IContext.createSudoClone() can be used to obtain sudo access).
+	 * @param context The context to be used
+	 * @param mendixObject The Mendix object for the new instance
+	 * @return a new instance of this proxy class
 	 */
 	public static docmosiscloud.proxies.Request initialize(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixObject mendixObject)
 	{
-		if (com.mendix.core.Core.isSubClassOf("DocmosisCloud.GetSampleDataRequest", mendixObject.getType()))
+		if (com.mendix.core.Core.isSubClassOf("DocmosisCloud.GetSampleDataRequest", mendixObject.getType())) {
 			return docmosiscloud.proxies.GetSampleDataRequest.initialize(context, mendixObject);
-
-		if (com.mendix.core.Core.isSubClassOf("DocmosisCloud.RenderRequest", mendixObject.getType()))
+		}
+		if (com.mendix.core.Core.isSubClassOf("DocmosisCloud.RenderRequest", mendixObject.getType())) {
 			return docmosiscloud.proxies.RenderRequest.initialize(context, mendixObject);
-
+		}
 		return new docmosiscloud.proxies.Request(context, mendixObject);
 	}
 
@@ -86,6 +91,7 @@ public class Request
 
 	/**
 	 * Commit the changes made on this proxy object.
+	 * @throws com.mendix.core.CoreException
 	 */
 	public final void commit() throws com.mendix.core.CoreException
 	{
@@ -94,6 +100,7 @@ public class Request
 
 	/**
 	 * Commit the changes made on this proxy object using the specified context.
+	 * @throws com.mendix.core.CoreException
 	 */
 	public final void commit(com.mendix.systemwideinterfaces.core.IContext context) throws com.mendix.core.CoreException
 	{
@@ -242,9 +249,9 @@ public class Request
 	@java.lang.Override
 	public boolean equals(Object obj)
 	{
-		if (obj == this)
+		if (obj == this) {
 			return true;
-
+		}
 		if (obj != null && getClass().equals(obj.getClass()))
 		{
 			final docmosiscloud.proxies.Request that = (docmosiscloud.proxies.Request) obj;
@@ -264,7 +271,7 @@ public class Request
 	 */
 	public static java.lang.String getType()
 	{
-		return "DocmosisCloud.Request";
+		return entityName;
 	}
 
 	/**

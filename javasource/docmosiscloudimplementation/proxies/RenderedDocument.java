@@ -23,7 +23,7 @@ public class RenderedDocument extends system.proxies.FileDocument
 		HasContents("HasContents"),
 		Size("Size");
 
-		private java.lang.String metaName;
+		private final java.lang.String metaName;
 
 		MemberNames(java.lang.String s)
 		{
@@ -39,14 +39,15 @@ public class RenderedDocument extends system.proxies.FileDocument
 
 	public RenderedDocument(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		this(context, com.mendix.core.Core.instantiate(context, "DocmosisCloudImplementation.RenderedDocument"));
+		this(context, com.mendix.core.Core.instantiate(context, entityName));
 	}
 
 	protected RenderedDocument(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixObject renderedDocumentMendixObject)
 	{
 		super(context, renderedDocumentMendixObject);
-		if (!com.mendix.core.Core.isSubClassOf("DocmosisCloudImplementation.RenderedDocument", renderedDocumentMendixObject.getType()))
-			throw new java.lang.IllegalArgumentException("The given object is not a DocmosisCloudImplementation.RenderedDocument");
+		if (!com.mendix.core.Core.isSubClassOf(entityName, renderedDocumentMendixObject.getType())) {
+			throw new java.lang.IllegalArgumentException(String.format("The given object is not a %s", entityName));
+		}	
 	}
 
 	/**
@@ -61,6 +62,9 @@ public class RenderedDocument extends system.proxies.FileDocument
 	/**
 	 * Initialize a proxy using context (recommended). This context will be used for security checking when the get- and set-methods without context parameters are called.
 	 * The get- and set-methods with context parameter should be used when for instance sudo access is necessary (IContext.createSudoClone() can be used to obtain sudo access).
+	 * @param context The context to be used
+	 * @param mendixObject The Mendix object for the new instance
+	 * @return a new instance of this proxy class
 	 */
 	public static docmosiscloudimplementation.proxies.RenderedDocument initialize(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixObject mendixObject)
 	{
@@ -75,18 +79,19 @@ public class RenderedDocument extends system.proxies.FileDocument
 
 	public static java.util.List<docmosiscloudimplementation.proxies.RenderedDocument> load(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String xpathConstraint) throws com.mendix.core.CoreException
 	{
-		java.util.List<docmosiscloudimplementation.proxies.RenderedDocument> result = new java.util.ArrayList<docmosiscloudimplementation.proxies.RenderedDocument>();
-		for (com.mendix.systemwideinterfaces.core.IMendixObject obj : com.mendix.core.Core.retrieveXPathQuery(context, "//DocmosisCloudImplementation.RenderedDocument" + xpathConstraint))
-			result.add(docmosiscloudimplementation.proxies.RenderedDocument.initialize(context, obj));
-		return result;
+		return com.mendix.core.Core.createXPathQuery(String.format("//%1$s%2$s", entityName, xpathConstraint))
+			.execute(context)
+			.stream()
+			.map(obj -> docmosiscloudimplementation.proxies.RenderedDocument.initialize(context, obj))
+			.collect(java.util.stream.Collectors.toList());
 	}
 
 	@java.lang.Override
 	public boolean equals(Object obj)
 	{
-		if (obj == this)
+		if (obj == this) {
 			return true;
-
+		}
 		if (obj != null && getClass().equals(obj.getClass()))
 		{
 			final docmosiscloudimplementation.proxies.RenderedDocument that = (docmosiscloudimplementation.proxies.RenderedDocument) obj;
@@ -106,7 +111,7 @@ public class RenderedDocument extends system.proxies.FileDocument
 	 */
 	public static java.lang.String getType()
 	{
-		return "DocmosisCloudImplementation.RenderedDocument";
+		return entityName;
 	}
 
 	/**

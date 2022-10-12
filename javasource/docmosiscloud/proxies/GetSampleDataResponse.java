@@ -25,7 +25,7 @@ public class GetSampleDataResponse extends docmosiscloud.proxies.Response
 		Response_Exception("DocmosisCloud.Response_Exception"),
 		Response_Http("DocmosisCloud.Response_Http");
 
-		private java.lang.String metaName;
+		private final java.lang.String metaName;
 
 		MemberNames(java.lang.String s)
 		{
@@ -41,14 +41,15 @@ public class GetSampleDataResponse extends docmosiscloud.proxies.Response
 
 	public GetSampleDataResponse(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		this(context, com.mendix.core.Core.instantiate(context, "DocmosisCloud.GetSampleDataResponse"));
+		this(context, com.mendix.core.Core.instantiate(context, entityName));
 	}
 
 	protected GetSampleDataResponse(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixObject getSampleDataResponseMendixObject)
 	{
 		super(context, getSampleDataResponseMendixObject);
-		if (!com.mendix.core.Core.isSubClassOf("DocmosisCloud.GetSampleDataResponse", getSampleDataResponseMendixObject.getType()))
-			throw new java.lang.IllegalArgumentException("The given object is not a DocmosisCloud.GetSampleDataResponse");
+		if (!com.mendix.core.Core.isSubClassOf(entityName, getSampleDataResponseMendixObject.getType())) {
+			throw new java.lang.IllegalArgumentException(String.format("The given object is not a %s", entityName));
+		}	
 	}
 
 	/**
@@ -63,6 +64,9 @@ public class GetSampleDataResponse extends docmosiscloud.proxies.Response
 	/**
 	 * Initialize a proxy using context (recommended). This context will be used for security checking when the get- and set-methods without context parameters are called.
 	 * The get- and set-methods with context parameter should be used when for instance sudo access is necessary (IContext.createSudoClone() can be used to obtain sudo access).
+	 * @param context The context to be used
+	 * @param mendixObject The Mendix object for the new instance
+	 * @return a new instance of this proxy class
 	 */
 	public static docmosiscloud.proxies.GetSampleDataResponse initialize(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixObject mendixObject)
 	{
@@ -127,9 +131,9 @@ public class GetSampleDataResponse extends docmosiscloud.proxies.Response
 	public final docmosiscloud.proxies.Enum_GetSampleData_Format getFormat(com.mendix.systemwideinterfaces.core.IContext context)
 	{
 		Object obj = getMendixObject().getValue(context, MemberNames.Format.toString());
-		if (obj == null)
+		if (obj == null) {
 			return null;
-
+		}
 		return docmosiscloud.proxies.Enum_GetSampleData_Format.valueOf((java.lang.String) obj);
 	}
 
@@ -149,18 +153,19 @@ public class GetSampleDataResponse extends docmosiscloud.proxies.Response
 	 */
 	public final void setFormat(com.mendix.systemwideinterfaces.core.IContext context, docmosiscloud.proxies.Enum_GetSampleData_Format format)
 	{
-		if (format != null)
+		if (format != null) {
 			getMendixObject().setValue(context, MemberNames.Format.toString(), format.toString());
-		else
+		} else {
 			getMendixObject().setValue(context, MemberNames.Format.toString(), null);
+		}
 	}
 
 	@java.lang.Override
 	public boolean equals(Object obj)
 	{
-		if (obj == this)
+		if (obj == this) {
 			return true;
-
+		}
 		if (obj != null && getClass().equals(obj.getClass()))
 		{
 			final docmosiscloud.proxies.GetSampleDataResponse that = (docmosiscloud.proxies.GetSampleDataResponse) obj;
@@ -180,7 +185,7 @@ public class GetSampleDataResponse extends docmosiscloud.proxies.Response
 	 */
 	public static java.lang.String getType()
 	{
-		return "DocmosisCloud.GetSampleDataResponse";
+		return entityName;
 	}
 
 	/**

@@ -41,7 +41,7 @@ public class EmployeeRender extends docmosiscloud.proxies.RenderRequest
 		RequestID("RequestID"),
 		EmployeeRender_EmployeeRenderData("DocmosisCloudUnitTesting.EmployeeRender_EmployeeRenderData");
 
-		private java.lang.String metaName;
+		private final java.lang.String metaName;
 
 		MemberNames(java.lang.String s)
 		{
@@ -57,14 +57,15 @@ public class EmployeeRender extends docmosiscloud.proxies.RenderRequest
 
 	public EmployeeRender(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		this(context, com.mendix.core.Core.instantiate(context, "DocmosisCloudUnitTesting.EmployeeRender"));
+		this(context, com.mendix.core.Core.instantiate(context, entityName));
 	}
 
 	protected EmployeeRender(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixObject employeeRenderMendixObject)
 	{
 		super(context, employeeRenderMendixObject);
-		if (!com.mendix.core.Core.isSubClassOf("DocmosisCloudUnitTesting.EmployeeRender", employeeRenderMendixObject.getType()))
-			throw new java.lang.IllegalArgumentException("The given object is not a DocmosisCloudUnitTesting.EmployeeRender");
+		if (!com.mendix.core.Core.isSubClassOf(entityName, employeeRenderMendixObject.getType())) {
+			throw new java.lang.IllegalArgumentException(String.format("The given object is not a %s", entityName));
+		}	
 	}
 
 	/**
@@ -79,6 +80,9 @@ public class EmployeeRender extends docmosiscloud.proxies.RenderRequest
 	/**
 	 * Initialize a proxy using context (recommended). This context will be used for security checking when the get- and set-methods without context parameters are called.
 	 * The get- and set-methods with context parameter should be used when for instance sudo access is necessary (IContext.createSudoClone() can be used to obtain sudo access).
+	 * @param context The context to be used
+	 * @param mendixObject The Mendix object for the new instance
+	 * @return a new instance of this proxy class
 	 */
 	public static docmosiscloudunittesting.proxies.EmployeeRender initialize(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixObject mendixObject)
 	{
@@ -92,6 +96,7 @@ public class EmployeeRender extends docmosiscloud.proxies.RenderRequest
 	}
 
 	/**
+	 * @throws com.mendix.core.CoreException
 	 * @return value of EmployeeRender_EmployeeRenderData
 	 */
 	public final docmosiscloudunittesting.proxies.EmployeeRenderData getEmployeeRender_EmployeeRenderData() throws com.mendix.core.CoreException
@@ -102,13 +107,15 @@ public class EmployeeRender extends docmosiscloud.proxies.RenderRequest
 	/**
 	 * @param context
 	 * @return value of EmployeeRender_EmployeeRenderData
+	 * @throws com.mendix.core.CoreException
 	 */
 	public final docmosiscloudunittesting.proxies.EmployeeRenderData getEmployeeRender_EmployeeRenderData(com.mendix.systemwideinterfaces.core.IContext context) throws com.mendix.core.CoreException
 	{
 		docmosiscloudunittesting.proxies.EmployeeRenderData result = null;
 		com.mendix.systemwideinterfaces.core.IMendixIdentifier identifier = getMendixObject().getValue(context, MemberNames.EmployeeRender_EmployeeRenderData.toString());
-		if (identifier != null)
+		if (identifier != null) {
 			result = docmosiscloudunittesting.proxies.EmployeeRenderData.load(context, identifier);
+		}
 		return result;
 	}
 
@@ -128,18 +135,19 @@ public class EmployeeRender extends docmosiscloud.proxies.RenderRequest
 	 */
 	public final void setEmployeeRender_EmployeeRenderData(com.mendix.systemwideinterfaces.core.IContext context, docmosiscloudunittesting.proxies.EmployeeRenderData employeerender_employeerenderdata)
 	{
-		if (employeerender_employeerenderdata == null)
+		if (employeerender_employeerenderdata == null) {
 			getMendixObject().setValue(context, MemberNames.EmployeeRender_EmployeeRenderData.toString(), null);
-		else
+		} else {
 			getMendixObject().setValue(context, MemberNames.EmployeeRender_EmployeeRenderData.toString(), employeerender_employeerenderdata.getMendixObject().getId());
+		}
 	}
 
 	@java.lang.Override
 	public boolean equals(Object obj)
 	{
-		if (obj == this)
+		if (obj == this) {
 			return true;
-
+		}
 		if (obj != null && getClass().equals(obj.getClass()))
 		{
 			final docmosiscloudunittesting.proxies.EmployeeRender that = (docmosiscloudunittesting.proxies.EmployeeRender) obj;
@@ -159,7 +167,7 @@ public class EmployeeRender extends docmosiscloud.proxies.RenderRequest
 	 */
 	public static java.lang.String getType()
 	{
-		return "DocmosisCloudUnitTesting.EmployeeRender";
+		return entityName;
 	}
 
 	/**

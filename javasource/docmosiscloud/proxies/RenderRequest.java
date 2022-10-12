@@ -40,7 +40,7 @@ public class RenderRequest extends docmosiscloud.proxies.Request
 		APIEndPoint("APIEndPoint"),
 		RequestID("RequestID");
 
-		private java.lang.String metaName;
+		private final java.lang.String metaName;
 
 		MemberNames(java.lang.String s)
 		{
@@ -56,14 +56,15 @@ public class RenderRequest extends docmosiscloud.proxies.Request
 
 	public RenderRequest(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		this(context, com.mendix.core.Core.instantiate(context, "DocmosisCloud.RenderRequest"));
+		this(context, com.mendix.core.Core.instantiate(context, entityName));
 	}
 
 	protected RenderRequest(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixObject renderRequestMendixObject)
 	{
 		super(context, renderRequestMendixObject);
-		if (!com.mendix.core.Core.isSubClassOf("DocmosisCloud.RenderRequest", renderRequestMendixObject.getType()))
-			throw new java.lang.IllegalArgumentException("The given object is not a DocmosisCloud.RenderRequest");
+		if (!com.mendix.core.Core.isSubClassOf(entityName, renderRequestMendixObject.getType())) {
+			throw new java.lang.IllegalArgumentException(String.format("The given object is not a %s", entityName));
+		}	
 	}
 
 	/**
@@ -78,12 +79,15 @@ public class RenderRequest extends docmosiscloud.proxies.Request
 	/**
 	 * Initialize a proxy using context (recommended). This context will be used for security checking when the get- and set-methods without context parameters are called.
 	 * The get- and set-methods with context parameter should be used when for instance sudo access is necessary (IContext.createSudoClone() can be used to obtain sudo access).
+	 * @param context The context to be used
+	 * @param mendixObject The Mendix object for the new instance
+	 * @return a new instance of this proxy class
 	 */
 	public static docmosiscloud.proxies.RenderRequest initialize(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixObject mendixObject)
 	{
-		if (com.mendix.core.Core.isSubClassOf("DocmosisCloudUnitTesting.EmployeeRender", mendixObject.getType()))
+		if (com.mendix.core.Core.isSubClassOf("DocmosisCloudUnitTesting.EmployeeRender", mendixObject.getType())) {
 			return docmosiscloudunittesting.proxies.EmployeeRender.initialize(context, mendixObject);
-
+		}
 		return new docmosiscloud.proxies.RenderRequest(context, mendixObject);
 	}
 
@@ -816,9 +820,9 @@ public class RenderRequest extends docmosiscloud.proxies.Request
 	@java.lang.Override
 	public boolean equals(Object obj)
 	{
-		if (obj == this)
+		if (obj == this) {
 			return true;
-
+		}
 		if (obj != null && getClass().equals(obj.getClass()))
 		{
 			final docmosiscloud.proxies.RenderRequest that = (docmosiscloud.proxies.RenderRequest) obj;
@@ -838,7 +842,7 @@ public class RenderRequest extends docmosiscloud.proxies.Request
 	 */
 	public static java.lang.String getType()
 	{
-		return "DocmosisCloud.RenderRequest";
+		return entityName;
 	}
 
 	/**

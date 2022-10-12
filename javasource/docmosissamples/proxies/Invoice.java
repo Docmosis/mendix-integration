@@ -26,7 +26,7 @@ public class Invoice
 		PaymentDays("PaymentDays"),
 		Invoice_Customer("DocmosisSamples.Invoice_Customer");
 
-		private java.lang.String metaName;
+		private final java.lang.String metaName;
 
 		MemberNames(java.lang.String s)
 		{
@@ -42,15 +42,17 @@ public class Invoice
 
 	public Invoice(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		this(context, com.mendix.core.Core.instantiate(context, "DocmosisSamples.Invoice"));
+		this(context, com.mendix.core.Core.instantiate(context, entityName));
 	}
 
 	protected Invoice(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixObject invoiceMendixObject)
 	{
-		if (invoiceMendixObject == null)
+		if (invoiceMendixObject == null) {
 			throw new java.lang.IllegalArgumentException("The given object cannot be null.");
-		if (!com.mendix.core.Core.isSubClassOf("DocmosisSamples.Invoice", invoiceMendixObject.getType()))
-			throw new java.lang.IllegalArgumentException("The given object is not a DocmosisSamples.Invoice");
+		}
+		if (!com.mendix.core.Core.isSubClassOf(entityName, invoiceMendixObject.getType())) {
+			throw new java.lang.IllegalArgumentException(String.format("The given object is not a %s", entityName));
+		}	
 
 		this.invoiceMendixObject = invoiceMendixObject;
 		this.context = context;
@@ -68,6 +70,9 @@ public class Invoice
 	/**
 	 * Initialize a proxy using context (recommended). This context will be used for security checking when the get- and set-methods without context parameters are called.
 	 * The get- and set-methods with context parameter should be used when for instance sudo access is necessary (IContext.createSudoClone() can be used to obtain sudo access).
+	 * @param context The context to be used
+	 * @param mendixObject The Mendix object for the new instance
+	 * @return a new instance of this proxy class
 	 */
 	public static docmosissamples.proxies.Invoice initialize(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixObject mendixObject)
 	{
@@ -82,14 +87,16 @@ public class Invoice
 
 	public static java.util.List<docmosissamples.proxies.Invoice> load(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String xpathConstraint) throws com.mendix.core.CoreException
 	{
-		java.util.List<docmosissamples.proxies.Invoice> result = new java.util.ArrayList<docmosissamples.proxies.Invoice>();
-		for (com.mendix.systemwideinterfaces.core.IMendixObject obj : com.mendix.core.Core.retrieveXPathQuery(context, "//DocmosisSamples.Invoice" + xpathConstraint))
-			result.add(docmosissamples.proxies.Invoice.initialize(context, obj));
-		return result;
+		return com.mendix.core.Core.createXPathQuery(String.format("//%1$s%2$s", entityName, xpathConstraint))
+			.execute(context)
+			.stream()
+			.map(obj -> docmosissamples.proxies.Invoice.initialize(context, obj))
+			.collect(java.util.stream.Collectors.toList());
 	}
 
 	/**
 	 * Commit the changes made on this proxy object.
+	 * @throws com.mendix.core.CoreException
 	 */
 	public final void commit() throws com.mendix.core.CoreException
 	{
@@ -98,6 +105,7 @@ public class Invoice
 
 	/**
 	 * Commit the changes made on this proxy object using the specified context.
+	 * @throws com.mendix.core.CoreException
 	 */
 	public final void commit(com.mendix.systemwideinterfaces.core.IContext context) throws com.mendix.core.CoreException
 	{
@@ -264,6 +272,7 @@ public class Invoice
 	}
 
 	/**
+	 * @throws com.mendix.core.CoreException
 	 * @return value of Invoice_Customer
 	 */
 	public final docmosissamples.proxies.Customer getInvoice_Customer() throws com.mendix.core.CoreException
@@ -274,13 +283,15 @@ public class Invoice
 	/**
 	 * @param context
 	 * @return value of Invoice_Customer
+	 * @throws com.mendix.core.CoreException
 	 */
 	public final docmosissamples.proxies.Customer getInvoice_Customer(com.mendix.systemwideinterfaces.core.IContext context) throws com.mendix.core.CoreException
 	{
 		docmosissamples.proxies.Customer result = null;
 		com.mendix.systemwideinterfaces.core.IMendixIdentifier identifier = getMendixObject().getValue(context, MemberNames.Invoice_Customer.toString());
-		if (identifier != null)
+		if (identifier != null) {
 			result = docmosissamples.proxies.Customer.load(context, identifier);
+		}
 		return result;
 	}
 
@@ -300,10 +311,11 @@ public class Invoice
 	 */
 	public final void setInvoice_Customer(com.mendix.systemwideinterfaces.core.IContext context, docmosissamples.proxies.Customer invoice_customer)
 	{
-		if (invoice_customer == null)
+		if (invoice_customer == null) {
 			getMendixObject().setValue(context, MemberNames.Invoice_Customer.toString(), null);
-		else
+		} else {
 			getMendixObject().setValue(context, MemberNames.Invoice_Customer.toString(), invoice_customer.getMendixObject().getId());
+		}
 	}
 
 	/**
@@ -325,9 +337,9 @@ public class Invoice
 	@java.lang.Override
 	public boolean equals(Object obj)
 	{
-		if (obj == this)
+		if (obj == this) {
 			return true;
-
+		}
 		if (obj != null && getClass().equals(obj.getClass()))
 		{
 			final docmosissamples.proxies.Invoice that = (docmosissamples.proxies.Invoice) obj;
@@ -347,7 +359,7 @@ public class Invoice
 	 */
 	public static java.lang.String getType()
 	{
-		return "DocmosisSamples.Invoice";
+		return entityName;
 	}
 
 	/**

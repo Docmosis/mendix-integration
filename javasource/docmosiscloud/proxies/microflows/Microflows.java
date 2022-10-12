@@ -7,13 +7,19 @@ package docmosiscloud.proxies.microflows;
 import java.util.HashMap;
 import java.util.Map;
 import com.mendix.core.Core;
-import com.mendix.core.CoreException;
-import com.mendix.systemwideinterfaces.MendixRuntimeException;
 import com.mendix.systemwideinterfaces.core.IContext;
 import com.mendix.systemwideinterfaces.core.IMendixObject;
 
 public class Microflows
 {
+	/**
+	 * @deprecated
+	 * The default constructor of the Microflows class should not be used.
+	 * Use the static microflow invocation methods instead.
+	 */
+	@java.lang.Deprecated(since = "9.12", forRemoval = true)
+	public Microflows() {}
+
 	// These are the microflows for the DocmosisCloud module
 	public static java.lang.String contentType_ApplicationJSON(IContext context)
 	{
@@ -24,6 +30,11 @@ public class Microflows
 	{
 		Map<java.lang.String, Object> params = new HashMap<>();
 		return (java.lang.String) Core.microflowCall("DocmosisCloud.ContentType_ApplicationUrlEncoded").withParams(params).execute(context);
+	}
+	public static java.lang.String contentType_UserAgent(IContext context)
+	{
+		Map<java.lang.String, Object> params = new HashMap<>();
+		return (java.lang.String) Core.microflowCall("DocmosisCloud.ContentType_UserAgent").withParams(params).execute(context);
 	}
 	public static docmosiscloud.proxies.Enum_Response_Result convert_SuccessToEnumeration(IContext context, boolean _success)
 	{
@@ -170,12 +181,13 @@ public class Microflows
 	public static void urlEncodedRequest_Add(IContext context, java.util.List<docmosiscloud.proxies.KeyValue> _keyValueList, java.lang.String _key, java.lang.String _value)
 	{
 		Map<java.lang.String, Object> params = new HashMap<>();
-		java.util.ArrayList<IMendixObject> listparam_keyValueList = null;
+		java.util.List<IMendixObject> listparam_keyValueList = null;
 		if (_keyValueList != null)
 		{
 			listparam_keyValueList = new java.util.ArrayList<>();
-			for (docmosiscloud.proxies.KeyValue obj : _keyValueList)
+			for (var obj : _keyValueList) {
 				listparam_keyValueList.add(obj.getMendixObject());
+			}
 		}
 		params.put("KeyValueList", listparam_keyValueList);
 
@@ -186,12 +198,13 @@ public class Microflows
 	public static java.lang.String urlEncodedRequest_CreateRequestURL(IContext context, java.util.List<docmosiscloud.proxies.KeyValue> _keyValueList, java.lang.String _requestURL)
 	{
 		Map<java.lang.String, Object> params = new HashMap<>();
-		java.util.ArrayList<IMendixObject> listparam_keyValueList = null;
+		java.util.List<IMendixObject> listparam_keyValueList = null;
 		if (_keyValueList != null)
 		{
 			listparam_keyValueList = new java.util.ArrayList<>();
-			for (docmosiscloud.proxies.KeyValue obj : _keyValueList)
+			for (var obj : _keyValueList) {
 				listparam_keyValueList.add(obj.getMendixObject());
+			}
 		}
 		params.put("KeyValueList", listparam_keyValueList);
 
@@ -203,13 +216,12 @@ public class Microflows
 		Map<java.lang.String, Object> params = new HashMap<>();
 		params.put("Request", _request == null ? null : _request.getMendixObject());
 		java.util.List<IMendixObject> objs = Core.microflowCall("DocmosisCloud.UrlEncodedRequest_Initialize").withParams(params).execute(context);
-		java.util.List<docmosiscloud.proxies.KeyValue> result = null;
-		if (objs != null)
-		{
-			result = new java.util.ArrayList<>();
-			for (IMendixObject obj : objs)
-				result.add(docmosiscloud.proxies.KeyValue.initialize(context, obj));
+		if (objs == null) {
+			return null;
+		} else {
+			return objs.stream()
+				.map(obj -> docmosiscloud.proxies.KeyValue.initialize(context, obj))
+				.collect(java.util.stream.Collectors.toList());
 		}
-		return result;
 	}
 }

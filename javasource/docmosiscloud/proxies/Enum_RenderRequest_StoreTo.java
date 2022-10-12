@@ -11,20 +11,19 @@ public enum Enum_RenderRequest_StoreTo
 	storage(new java.lang.String[][] { new java.lang.String[] { "en_US", "storage" }, new java.lang.String[] { "nl_NL", "storage" }, new java.lang.String[] { "de_DE", "storage" }, new java.lang.String[] { "fr_FR", "storage" } }),
 	s3(new java.lang.String[][] { new java.lang.String[] { "en_US", "s3" }, new java.lang.String[] { "nl_NL", "s3" }, new java.lang.String[] { "de_DE", "s3" }, new java.lang.String[] { "fr_FR", "s3" } });
 
-	private java.util.Map<java.lang.String, java.lang.String> captions;
+	private final java.util.Map<java.lang.String, java.lang.String> captions;
 
 	private Enum_RenderRequest_StoreTo(java.lang.String[][] captionStrings)
 	{
-		this.captions = new java.util.HashMap<java.lang.String, java.lang.String>();
-		for (java.lang.String[] captionString : captionStrings)
+		this.captions = new java.util.HashMap<>();
+		for (java.lang.String[] captionString : captionStrings) {
 			captions.put(captionString[0], captionString[1]);
+		}
 	}
 
 	public java.lang.String getCaption(java.lang.String languageCode)
 	{
-		if (captions.containsKey(languageCode))
-			return captions.get(languageCode);
-		return captions.get("en_US");
+		return captions.getOrDefault(languageCode, "en_US");
 	}
 
 	public java.lang.String getCaption()

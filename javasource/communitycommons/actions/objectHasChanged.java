@@ -16,6 +16,8 @@ import com.mendix.webui.CustomJavaAction;
 
 /**
  * Returns true if at least one member (including owned associations) of this object has changed.
+ * 
+ * For Mendix < 9.5 this action keeps track of changes to the object except when 'changing to the same value'. For Mendix >= 9.5 this action keeps track of all changes. This is a result of a change of the underlying Mendix runtime-server behaviour. 
  */
 public class objectHasChanged extends CustomJavaAction<java.lang.Boolean>
 {
@@ -37,6 +39,7 @@ public class objectHasChanged extends CustomJavaAction<java.lang.Boolean>
 
 	/**
 	 * Returns a string representation of this action
+	 * @return a string representation of this action
 	 */
 	@java.lang.Override
 	public java.lang.String toString()

@@ -1,7 +1,8 @@
 # The module
 
-<h2>Table of contents</h2>
+## Table of contents
 
+- [Table of contents](#table-of-contents)
 - [Requirements](#requirements)
 - [Dependencies](#dependencies)
 - [Terminology and Process](#terminology-and-process)
@@ -42,7 +43,7 @@ Use Docmosis Cloud Console to upload the template.
 
 In your app you have to collect all required data and structure it in such a way that it is compatible with the template you created. The module includes a utility that supports you in generating a non-persistent example data structure based on your template.
 
-If you want to create the structure manually then you can skip the remainder of this paragraph. Otherwise continue reading to see how the example data utility works.  The [example app](example-app.md) shows it in operation.
+If you want to create the structure manually then you can skip the remainder of this paragraph. Otherwise continue reading to see how the example data utility works.  The [example app](https://github.com/Docmosis/mendix-integration/blob/main/DOCS/example-app.md) shows it in operation.
 
 <img align="right" src="assets/getsampledata-microflows.png" alt="GetSampleData microflows">
 
@@ -66,7 +67,7 @@ Once you have a template and a matching data structure then you can render the d
 First initialize the request using microflow `RenderRequest_Initialize`:
 
 - **TemplateName**: path and name of the template to use, for example *samples/InvoiceTemplate.docx*
-- **OutputName**: name of the rendered document, for example *invoice-21I000388.pdf*.  Docmosis will use the file extension to determine the format of document to generate, in this case *pdf*,
+- **OutputName**: name of the rendered document, for example *invoice-21I000388.pdf*.  Docmosis will use the file extension to determine the format of document to generate, in this case *pdf*, 
 - common parameters are [documented here](#common-request-initialization-parameters)
 
 <img align="right" src="assets/render-microflows.png" alt="Render microflows">
@@ -94,7 +95,7 @@ It is extremely flexible and powerful. To help you get started quickly here are 
 > Attribute `StreamResultInResponse` is enforced to `true` for module implementation reasons. Changing it yourself will not change the behavior.
 > Attribute `Data` will be populated with your data. Any data you put in here will be overwritten. See the next paragraph for details.
 
-The next step is equally or maybe even more important: the data to be merged with the template. Your app has to generate a JSON string that matches the template. Typically that is a flow that involves data retrieval, creating one or more non-persistent objects and export it to JSON; see also paragraph [Generate the data structure in your app](#generate-the-data-structure-in-your-app). As that is completely specific to your app exact details cannot be given here. The [example app](DOCS/example-app.md) can be used as a guide.
+The next step is equally or maybe even more important: the data to be merged with the template. Your app has to generate a JSON string that matches the template. Typically that is a flow that involves data retrieval, creating one or more non-persistent objects and export it to JSON; see also paragraph [Generate the data structure in your app](#generate-the-data-structure-in-your-app). As that is completely specific to your app exact details cannot be given here. The [example app](https://github.com/Docmosis/mendix-integration/blob/main/DOCS/example-app.md) can be used as a guide.
 
 When the `RenderRequest` object is set as required and a string with JSON data is available then call microflow `CWS_Render` to render the document.
 

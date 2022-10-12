@@ -25,7 +25,7 @@ public class RenderResponse extends docmosiscloud.proxies.Response
 		Response_Exception("DocmosisCloud.Response_Exception"),
 		Response_Http("DocmosisCloud.Response_Http");
 
-		private java.lang.String metaName;
+		private final java.lang.String metaName;
 
 		MemberNames(java.lang.String s)
 		{
@@ -41,14 +41,15 @@ public class RenderResponse extends docmosiscloud.proxies.Response
 
 	public RenderResponse(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		this(context, com.mendix.core.Core.instantiate(context, "DocmosisCloud.RenderResponse"));
+		this(context, com.mendix.core.Core.instantiate(context, entityName));
 	}
 
 	protected RenderResponse(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixObject renderResponseMendixObject)
 	{
 		super(context, renderResponseMendixObject);
-		if (!com.mendix.core.Core.isSubClassOf("DocmosisCloud.RenderResponse", renderResponseMendixObject.getType()))
-			throw new java.lang.IllegalArgumentException("The given object is not a DocmosisCloud.RenderResponse");
+		if (!com.mendix.core.Core.isSubClassOf(entityName, renderResponseMendixObject.getType())) {
+			throw new java.lang.IllegalArgumentException(String.format("The given object is not a %s", entityName));
+		}	
 	}
 
 	/**
@@ -63,6 +64,9 @@ public class RenderResponse extends docmosiscloud.proxies.Response
 	/**
 	 * Initialize a proxy using context (recommended). This context will be used for security checking when the get- and set-methods without context parameters are called.
 	 * The get- and set-methods with context parameter should be used when for instance sudo access is necessary (IContext.createSudoClone() can be used to obtain sudo access).
+	 * @param context The context to be used
+	 * @param mendixObject The Mendix object for the new instance
+	 * @return a new instance of this proxy class
 	 */
 	public static docmosiscloud.proxies.RenderResponse initialize(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixObject mendixObject)
 	{
@@ -150,9 +154,9 @@ public class RenderResponse extends docmosiscloud.proxies.Response
 	@java.lang.Override
 	public boolean equals(Object obj)
 	{
-		if (obj == this)
+		if (obj == this) {
 			return true;
-
+		}
 		if (obj != null && getClass().equals(obj.getClass()))
 		{
 			final docmosiscloud.proxies.RenderResponse that = (docmosiscloud.proxies.RenderResponse) obj;
@@ -172,7 +176,7 @@ public class RenderResponse extends docmosiscloud.proxies.Response
 	 */
 	public static java.lang.String getType()
 	{
-		return "DocmosisCloud.RenderResponse";
+		return entityName;
 	}
 
 	/**

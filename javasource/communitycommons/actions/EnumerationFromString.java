@@ -37,12 +37,13 @@ public class EnumerationFromString extends CustomJavaAction<java.lang.String>
             
                 // Replace LogLevel.class by the proxy class for your Enumeration
 		Optional<LogLevel> result = Misc.enumFromString(LogLevel.class, toConvert);
-                return result.get().name();
+                return result.orElseThrow().name();
 		// END USER CODE
 	}
 
 	/**
 	 * Returns a string representation of this action
+	 * @return a string representation of this action
 	 */
 	@java.lang.Override
 	public java.lang.String toString()

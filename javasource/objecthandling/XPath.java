@@ -170,6 +170,12 @@ public class XPath<T>
 		return this.requireBinOp(true);
 	}
 	
+	public XPath<T> startsWith(Object attr, String value)
+	{
+		autoInsertAnd().append(" starts-with(").append(String.valueOf(attr)).append(",").append(valueToXPathValue(value)).append(") ");
+		return this.requireBinOp(true);
+	}
+
 	public XPath<T> compare(Object attr, String operator, Object value) {
 		return compare(new Object[] {attr}, operator, value);
 	}

@@ -27,7 +27,7 @@ public class Response
 		Response_Exception("DocmosisCloud.Response_Exception"),
 		Response_Http("DocmosisCloud.Response_Http");
 
-		private java.lang.String metaName;
+		private final java.lang.String metaName;
 
 		MemberNames(java.lang.String s)
 		{
@@ -43,15 +43,17 @@ public class Response
 
 	public Response(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		this(context, com.mendix.core.Core.instantiate(context, "DocmosisCloud.Response"));
+		this(context, com.mendix.core.Core.instantiate(context, entityName));
 	}
 
 	protected Response(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixObject responseMendixObject)
 	{
-		if (responseMendixObject == null)
+		if (responseMendixObject == null) {
 			throw new java.lang.IllegalArgumentException("The given object cannot be null.");
-		if (!com.mendix.core.Core.isSubClassOf("DocmosisCloud.Response", responseMendixObject.getType()))
-			throw new java.lang.IllegalArgumentException("The given object is not a DocmosisCloud.Response");
+		}
+		if (!com.mendix.core.Core.isSubClassOf(entityName, responseMendixObject.getType())) {
+			throw new java.lang.IllegalArgumentException(String.format("The given object is not a %s", entityName));
+		}	
 
 		this.responseMendixObject = responseMendixObject;
 		this.context = context;
@@ -69,15 +71,18 @@ public class Response
 	/**
 	 * Initialize a proxy using context (recommended). This context will be used for security checking when the get- and set-methods without context parameters are called.
 	 * The get- and set-methods with context parameter should be used when for instance sudo access is necessary (IContext.createSudoClone() can be used to obtain sudo access).
+	 * @param context The context to be used
+	 * @param mendixObject The Mendix object for the new instance
+	 * @return a new instance of this proxy class
 	 */
 	public static docmosiscloud.proxies.Response initialize(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixObject mendixObject)
 	{
-		if (com.mendix.core.Core.isSubClassOf("DocmosisCloud.GetSampleDataResponse", mendixObject.getType()))
+		if (com.mendix.core.Core.isSubClassOf("DocmosisCloud.GetSampleDataResponse", mendixObject.getType())) {
 			return docmosiscloud.proxies.GetSampleDataResponse.initialize(context, mendixObject);
-
-		if (com.mendix.core.Core.isSubClassOf("DocmosisCloud.RenderResponse", mendixObject.getType()))
+		}
+		if (com.mendix.core.Core.isSubClassOf("DocmosisCloud.RenderResponse", mendixObject.getType())) {
 			return docmosiscloud.proxies.RenderResponse.initialize(context, mendixObject);
-
+		}
 		return new docmosiscloud.proxies.Response(context, mendixObject);
 	}
 
@@ -89,6 +94,7 @@ public class Response
 
 	/**
 	 * Commit the changes made on this proxy object.
+	 * @throws com.mendix.core.CoreException
 	 */
 	public final void commit() throws com.mendix.core.CoreException
 	{
@@ -97,6 +103,7 @@ public class Response
 
 	/**
 	 * Commit the changes made on this proxy object using the specified context.
+	 * @throws com.mendix.core.CoreException
 	 */
 	public final void commit(com.mendix.systemwideinterfaces.core.IContext context) throws com.mendix.core.CoreException
 	{
@@ -134,9 +141,9 @@ public class Response
 	public final docmosiscloud.proxies.Enum_Response_Result getResult(com.mendix.systemwideinterfaces.core.IContext context)
 	{
 		Object obj = getMendixObject().getValue(context, MemberNames.Result.toString());
-		if (obj == null)
+		if (obj == null) {
 			return null;
-
+		}
 		return docmosiscloud.proxies.Enum_Response_Result.valueOf((java.lang.String) obj);
 	}
 
@@ -156,10 +163,11 @@ public class Response
 	 */
 	public final void setResult(com.mendix.systemwideinterfaces.core.IContext context, docmosiscloud.proxies.Enum_Response_Result result)
 	{
-		if (result != null)
+		if (result != null) {
 			getMendixObject().setValue(context, MemberNames.Result.toString(), result.toString());
-		else
+		} else {
 			getMendixObject().setValue(context, MemberNames.Result.toString(), null);
+		}
 	}
 
 	/**
@@ -271,6 +279,7 @@ public class Response
 	}
 
 	/**
+	 * @throws com.mendix.core.CoreException
 	 * @return value of Response_Exception
 	 */
 	public final docmosiscloud.proxies.Exception getResponse_Exception() throws com.mendix.core.CoreException
@@ -281,13 +290,15 @@ public class Response
 	/**
 	 * @param context
 	 * @return value of Response_Exception
+	 * @throws com.mendix.core.CoreException
 	 */
 	public final docmosiscloud.proxies.Exception getResponse_Exception(com.mendix.systemwideinterfaces.core.IContext context) throws com.mendix.core.CoreException
 	{
 		docmosiscloud.proxies.Exception result = null;
 		com.mendix.systemwideinterfaces.core.IMendixIdentifier identifier = getMendixObject().getValue(context, MemberNames.Response_Exception.toString());
-		if (identifier != null)
+		if (identifier != null) {
 			result = docmosiscloud.proxies.Exception.load(context, identifier);
+		}
 		return result;
 	}
 
@@ -307,13 +318,15 @@ public class Response
 	 */
 	public final void setResponse_Exception(com.mendix.systemwideinterfaces.core.IContext context, docmosiscloud.proxies.Exception response_exception)
 	{
-		if (response_exception == null)
+		if (response_exception == null) {
 			getMendixObject().setValue(context, MemberNames.Response_Exception.toString(), null);
-		else
+		} else {
 			getMendixObject().setValue(context, MemberNames.Response_Exception.toString(), response_exception.getMendixObject().getId());
+		}
 	}
 
 	/**
+	 * @throws com.mendix.core.CoreException
 	 * @return value of Response_Http
 	 */
 	public final docmosiscloud.proxies.Http getResponse_Http() throws com.mendix.core.CoreException
@@ -324,13 +337,15 @@ public class Response
 	/**
 	 * @param context
 	 * @return value of Response_Http
+	 * @throws com.mendix.core.CoreException
 	 */
 	public final docmosiscloud.proxies.Http getResponse_Http(com.mendix.systemwideinterfaces.core.IContext context) throws com.mendix.core.CoreException
 	{
 		docmosiscloud.proxies.Http result = null;
 		com.mendix.systemwideinterfaces.core.IMendixIdentifier identifier = getMendixObject().getValue(context, MemberNames.Response_Http.toString());
-		if (identifier != null)
+		if (identifier != null) {
 			result = docmosiscloud.proxies.Http.load(context, identifier);
+		}
 		return result;
 	}
 
@@ -350,10 +365,11 @@ public class Response
 	 */
 	public final void setResponse_Http(com.mendix.systemwideinterfaces.core.IContext context, docmosiscloud.proxies.Http response_http)
 	{
-		if (response_http == null)
+		if (response_http == null) {
 			getMendixObject().setValue(context, MemberNames.Response_Http.toString(), null);
-		else
+		} else {
 			getMendixObject().setValue(context, MemberNames.Response_Http.toString(), response_http.getMendixObject().getId());
+		}
 	}
 
 	/**
@@ -375,9 +391,9 @@ public class Response
 	@java.lang.Override
 	public boolean equals(Object obj)
 	{
-		if (obj == this)
+		if (obj == this) {
 			return true;
-
+		}
 		if (obj != null && getClass().equals(obj.getClass()))
 		{
 			final docmosiscloud.proxies.Response that = (docmosiscloud.proxies.Response) obj;
@@ -397,7 +413,7 @@ public class Response
 	 */
 	public static java.lang.String getType()
 	{
-		return "DocmosisCloud.Response";
+		return entityName;
 	}
 
 	/**

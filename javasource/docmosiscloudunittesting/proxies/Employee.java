@@ -25,7 +25,7 @@ public class Employee
 		StartedOn("StartedOn"),
 		Employee_EmployeeRenderData("DocmosisCloudUnitTesting.Employee_EmployeeRenderData");
 
-		private java.lang.String metaName;
+		private final java.lang.String metaName;
 
 		MemberNames(java.lang.String s)
 		{
@@ -41,15 +41,17 @@ public class Employee
 
 	public Employee(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		this(context, com.mendix.core.Core.instantiate(context, "DocmosisCloudUnitTesting.Employee"));
+		this(context, com.mendix.core.Core.instantiate(context, entityName));
 	}
 
 	protected Employee(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixObject employeeMendixObject)
 	{
-		if (employeeMendixObject == null)
+		if (employeeMendixObject == null) {
 			throw new java.lang.IllegalArgumentException("The given object cannot be null.");
-		if (!com.mendix.core.Core.isSubClassOf("DocmosisCloudUnitTesting.Employee", employeeMendixObject.getType()))
-			throw new java.lang.IllegalArgumentException("The given object is not a DocmosisCloudUnitTesting.Employee");
+		}
+		if (!com.mendix.core.Core.isSubClassOf(entityName, employeeMendixObject.getType())) {
+			throw new java.lang.IllegalArgumentException(String.format("The given object is not a %s", entityName));
+		}	
 
 		this.employeeMendixObject = employeeMendixObject;
 		this.context = context;
@@ -67,6 +69,9 @@ public class Employee
 	/**
 	 * Initialize a proxy using context (recommended). This context will be used for security checking when the get- and set-methods without context parameters are called.
 	 * The get- and set-methods with context parameter should be used when for instance sudo access is necessary (IContext.createSudoClone() can be used to obtain sudo access).
+	 * @param context The context to be used
+	 * @param mendixObject The Mendix object for the new instance
+	 * @return a new instance of this proxy class
 	 */
 	public static docmosiscloudunittesting.proxies.Employee initialize(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixObject mendixObject)
 	{
@@ -81,6 +86,7 @@ public class Employee
 
 	/**
 	 * Commit the changes made on this proxy object.
+	 * @throws com.mendix.core.CoreException
 	 */
 	public final void commit() throws com.mendix.core.CoreException
 	{
@@ -89,6 +95,7 @@ public class Employee
 
 	/**
 	 * Commit the changes made on this proxy object using the specified context.
+	 * @throws com.mendix.core.CoreException
 	 */
 	public final void commit(com.mendix.systemwideinterfaces.core.IContext context) throws com.mendix.core.CoreException
 	{
@@ -219,6 +226,7 @@ public class Employee
 	}
 
 	/**
+	 * @throws com.mendix.core.CoreException
 	 * @return value of Employee_EmployeeRenderData
 	 */
 	public final docmosiscloudunittesting.proxies.EmployeeRenderData getEmployee_EmployeeRenderData() throws com.mendix.core.CoreException
@@ -229,13 +237,15 @@ public class Employee
 	/**
 	 * @param context
 	 * @return value of Employee_EmployeeRenderData
+	 * @throws com.mendix.core.CoreException
 	 */
 	public final docmosiscloudunittesting.proxies.EmployeeRenderData getEmployee_EmployeeRenderData(com.mendix.systemwideinterfaces.core.IContext context) throws com.mendix.core.CoreException
 	{
 		docmosiscloudunittesting.proxies.EmployeeRenderData result = null;
 		com.mendix.systemwideinterfaces.core.IMendixIdentifier identifier = getMendixObject().getValue(context, MemberNames.Employee_EmployeeRenderData.toString());
-		if (identifier != null)
+		if (identifier != null) {
 			result = docmosiscloudunittesting.proxies.EmployeeRenderData.load(context, identifier);
+		}
 		return result;
 	}
 
@@ -255,10 +265,11 @@ public class Employee
 	 */
 	public final void setEmployee_EmployeeRenderData(com.mendix.systemwideinterfaces.core.IContext context, docmosiscloudunittesting.proxies.EmployeeRenderData employee_employeerenderdata)
 	{
-		if (employee_employeerenderdata == null)
+		if (employee_employeerenderdata == null) {
 			getMendixObject().setValue(context, MemberNames.Employee_EmployeeRenderData.toString(), null);
-		else
+		} else {
 			getMendixObject().setValue(context, MemberNames.Employee_EmployeeRenderData.toString(), employee_employeerenderdata.getMendixObject().getId());
+		}
 	}
 
 	/**
@@ -280,9 +291,9 @@ public class Employee
 	@java.lang.Override
 	public boolean equals(Object obj)
 	{
-		if (obj == this)
+		if (obj == this) {
 			return true;
-
+		}
 		if (obj != null && getClass().equals(obj.getClass()))
 		{
 			final docmosiscloudunittesting.proxies.Employee that = (docmosiscloudunittesting.proxies.Employee) obj;
@@ -302,7 +313,7 @@ public class Employee
 	 */
 	public static java.lang.String getType()
 	{
-		return "DocmosisCloudUnitTesting.Employee";
+		return entityName;
 	}
 
 	/**

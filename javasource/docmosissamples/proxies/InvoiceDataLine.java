@@ -26,7 +26,7 @@ public class InvoiceDataLine
 		PriceQuantity("PriceQuantity"),
 		InvoiceDataLine_InvoiceData("DocmosisSamples.InvoiceDataLine_InvoiceData");
 
-		private java.lang.String metaName;
+		private final java.lang.String metaName;
 
 		MemberNames(java.lang.String s)
 		{
@@ -42,15 +42,17 @@ public class InvoiceDataLine
 
 	public InvoiceDataLine(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		this(context, com.mendix.core.Core.instantiate(context, "DocmosisSamples.InvoiceDataLine"));
+		this(context, com.mendix.core.Core.instantiate(context, entityName));
 	}
 
 	protected InvoiceDataLine(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixObject invoiceDataLineMendixObject)
 	{
-		if (invoiceDataLineMendixObject == null)
+		if (invoiceDataLineMendixObject == null) {
 			throw new java.lang.IllegalArgumentException("The given object cannot be null.");
-		if (!com.mendix.core.Core.isSubClassOf("DocmosisSamples.InvoiceDataLine", invoiceDataLineMendixObject.getType()))
-			throw new java.lang.IllegalArgumentException("The given object is not a DocmosisSamples.InvoiceDataLine");
+		}
+		if (!com.mendix.core.Core.isSubClassOf(entityName, invoiceDataLineMendixObject.getType())) {
+			throw new java.lang.IllegalArgumentException(String.format("The given object is not a %s", entityName));
+		}	
 
 		this.invoiceDataLineMendixObject = invoiceDataLineMendixObject;
 		this.context = context;
@@ -68,6 +70,9 @@ public class InvoiceDataLine
 	/**
 	 * Initialize a proxy using context (recommended). This context will be used for security checking when the get- and set-methods without context parameters are called.
 	 * The get- and set-methods with context parameter should be used when for instance sudo access is necessary (IContext.createSudoClone() can be used to obtain sudo access).
+	 * @param context The context to be used
+	 * @param mendixObject The Mendix object for the new instance
+	 * @return a new instance of this proxy class
 	 */
 	public static docmosissamples.proxies.InvoiceDataLine initialize(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixObject mendixObject)
 	{
@@ -82,6 +87,7 @@ public class InvoiceDataLine
 
 	/**
 	 * Commit the changes made on this proxy object.
+	 * @throws com.mendix.core.CoreException
 	 */
 	public final void commit() throws com.mendix.core.CoreException
 	{
@@ -90,6 +96,7 @@ public class InvoiceDataLine
 
 	/**
 	 * Commit the changes made on this proxy object using the specified context.
+	 * @throws com.mendix.core.CoreException
 	 */
 	public final void commit(com.mendix.systemwideinterfaces.core.IContext context) throws com.mendix.core.CoreException
 	{
@@ -256,6 +263,7 @@ public class InvoiceDataLine
 	}
 
 	/**
+	 * @throws com.mendix.core.CoreException
 	 * @return value of InvoiceDataLine_InvoiceData
 	 */
 	public final docmosissamples.proxies.InvoiceData getInvoiceDataLine_InvoiceData() throws com.mendix.core.CoreException
@@ -266,13 +274,15 @@ public class InvoiceDataLine
 	/**
 	 * @param context
 	 * @return value of InvoiceDataLine_InvoiceData
+	 * @throws com.mendix.core.CoreException
 	 */
 	public final docmosissamples.proxies.InvoiceData getInvoiceDataLine_InvoiceData(com.mendix.systemwideinterfaces.core.IContext context) throws com.mendix.core.CoreException
 	{
 		docmosissamples.proxies.InvoiceData result = null;
 		com.mendix.systemwideinterfaces.core.IMendixIdentifier identifier = getMendixObject().getValue(context, MemberNames.InvoiceDataLine_InvoiceData.toString());
-		if (identifier != null)
+		if (identifier != null) {
 			result = docmosissamples.proxies.InvoiceData.load(context, identifier);
+		}
 		return result;
 	}
 
@@ -292,10 +302,11 @@ public class InvoiceDataLine
 	 */
 	public final void setInvoiceDataLine_InvoiceData(com.mendix.systemwideinterfaces.core.IContext context, docmosissamples.proxies.InvoiceData invoicedataline_invoicedata)
 	{
-		if (invoicedataline_invoicedata == null)
+		if (invoicedataline_invoicedata == null) {
 			getMendixObject().setValue(context, MemberNames.InvoiceDataLine_InvoiceData.toString(), null);
-		else
+		} else {
 			getMendixObject().setValue(context, MemberNames.InvoiceDataLine_InvoiceData.toString(), invoicedataline_invoicedata.getMendixObject().getId());
+		}
 	}
 
 	/**
@@ -317,9 +328,9 @@ public class InvoiceDataLine
 	@java.lang.Override
 	public boolean equals(Object obj)
 	{
-		if (obj == this)
+		if (obj == this) {
 			return true;
-
+		}
 		if (obj != null && getClass().equals(obj.getClass()))
 		{
 			final docmosissamples.proxies.InvoiceDataLine that = (docmosissamples.proxies.InvoiceDataLine) obj;
@@ -339,7 +350,7 @@ public class InvoiceDataLine
 	 */
 	public static java.lang.String getType()
 	{
-		return "DocmosisSamples.InvoiceDataLine";
+		return entityName;
 	}
 
 	/**
