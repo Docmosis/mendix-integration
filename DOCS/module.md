@@ -15,7 +15,7 @@
 
 ## Requirements
 
-The module can be imported in an app on [Mendix Studio Pro 8.12.5 or later](https://marketplace.mendix.com/link/studiopro/). That makes it compatible with Mendix 9 and in [version 8.12.5](https://docs.mendix.com/releasenotes/studio-pro/8.12#8125) a major security fix was implemented.
+The module can be imported in an app on [Mendix Studio Pro 9.24.0 or later](https://marketplace.mendix.com/link/studiopro/). That makes it compatible with Mendix 10.
 
 ## Dependencies
 

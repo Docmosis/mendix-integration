@@ -29,7 +29,8 @@ public class Workflow
 		CanBeContinued("CanBeContinued"),
 		State("State"),
 		Reason("Reason"),
-		Workflow_WorkflowDefinition("System.Workflow_WorkflowDefinition");
+		Workflow_WorkflowDefinition("System.Workflow_WorkflowDefinition"),
+		Workflow_ParentWorkflow("System.Workflow_ParentWorkflow");
 
 		private final java.lang.String metaName;
 
@@ -509,6 +510,53 @@ public class Workflow
 			getMendixObject().setValue(context, MemberNames.Workflow_WorkflowDefinition.toString(), null);
 		} else {
 			getMendixObject().setValue(context, MemberNames.Workflow_WorkflowDefinition.toString(), workflow_workflowdefinition.getMendixObject().getId());
+		}
+	}
+
+	/**
+	 * @throws com.mendix.core.CoreException
+	 * @return value of Workflow_ParentWorkflow
+	 */
+	public final system.proxies.Workflow getWorkflow_ParentWorkflow() throws com.mendix.core.CoreException
+	{
+		return getWorkflow_ParentWorkflow(getContext());
+	}
+
+	/**
+	 * @param context
+	 * @return value of Workflow_ParentWorkflow
+	 * @throws com.mendix.core.CoreException
+	 */
+	public final system.proxies.Workflow getWorkflow_ParentWorkflow(com.mendix.systemwideinterfaces.core.IContext context) throws com.mendix.core.CoreException
+	{
+		system.proxies.Workflow result = null;
+		com.mendix.systemwideinterfaces.core.IMendixIdentifier identifier = getMendixObject().getValue(context, MemberNames.Workflow_ParentWorkflow.toString());
+		if (identifier != null) {
+			result = system.proxies.Workflow.load(context, identifier);
+		}
+		return result;
+	}
+
+	/**
+	 * Set value of Workflow_ParentWorkflow
+	 * @param workflow_parentworkflow
+	 */
+	public final void setWorkflow_ParentWorkflow(system.proxies.Workflow workflow_parentworkflow)
+	{
+		setWorkflow_ParentWorkflow(getContext(), workflow_parentworkflow);
+	}
+
+	/**
+	 * Set value of Workflow_ParentWorkflow
+	 * @param context
+	 * @param workflow_parentworkflow
+	 */
+	public final void setWorkflow_ParentWorkflow(com.mendix.systemwideinterfaces.core.IContext context, system.proxies.Workflow workflow_parentworkflow)
+	{
+		if (workflow_parentworkflow == null) {
+			getMendixObject().setValue(context, MemberNames.Workflow_ParentWorkflow.toString(), null);
+		} else {
+			getMendixObject().setValue(context, MemberNames.Workflow_ParentWorkflow.toString(), workflow_parentworkflow.getMendixObject().getId());
 		}
 	}
 

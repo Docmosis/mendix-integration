@@ -16,7 +16,11 @@
         "editor.wordWrap": "wordWrapColumn",
         "editor.wordWrapColumn": 64,
         "editor.lineNumbers": "off",
-        "editor.quickSuggestions": false,
+        "editor.quickSuggestions": {
+            "comments": "off",
+            "strings": "off",
+            "other": "off"
+        },
         "editor.defaultFormatter": "yzhang.markdown-all-in-one",
         "editor.minimap.enabled": false,
     },
