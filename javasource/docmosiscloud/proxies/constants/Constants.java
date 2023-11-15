@@ -27,9 +27,9 @@ public class Constants
 	}
 
 	/**
-	* End-point in the USA https://us.dws3.docmosis.com/api
-	* End-point in the EU   https://eu.dws3.docmosis.com/api
-	* End-point in AUS       https://au.dws3.docmosis.com/api
+	* End-point US West             - https://us1.dws4.docmosis.com/api
+	* End-point Europe Central   - https://eu1.dws4.docmosis.com/api
+	* End-point in Australia East - https://au1.dws4.docmosis.com/api
 	*/
 	public static java.lang.String getAPIEndpoint()
 	{

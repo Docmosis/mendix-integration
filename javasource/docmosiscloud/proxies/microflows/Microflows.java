@@ -154,6 +154,13 @@ public class Microflows
 		params.put("HttpResponse", _httpResponse == null ? null : _httpResponse.getMendixObject());
 		Core.microflowCall("DocmosisCloud.Response_Enrich").withParams(params).execute(context);
 	}
+	public static void response_EnrichDocmosisResponse(IContext context, docmosiscloud.proxies.Response _response, system.proxies.HttpResponse _httpResponse)
+	{
+		Map<java.lang.String, Object> params = new HashMap<>();
+		params.put("Response", _response == null ? null : _response.getMendixObject());
+		params.put("HttpResponse", _httpResponse == null ? null : _httpResponse.getMendixObject());
+		Core.microflowCall("DocmosisCloud.Response_EnrichDocmosisResponse").withParams(params).execute(context);
+	}
 	public static void response_EnrichException(IContext context, docmosiscloud.proxies.Response _response, java.lang.String _requestURL, java.lang.String _requestID, system.proxies.HttpResponse _httpResponse, system.proxies.Error _error)
 	{
 		Map<java.lang.String, Object> params = new HashMap<>();
@@ -163,6 +170,13 @@ public class Microflows
 		params.put("HttpResponse", _httpResponse == null ? null : _httpResponse.getMendixObject());
 		params.put("Error", _error == null ? null : _error.getMendixObject());
 		Core.microflowCall("DocmosisCloud.Response_EnrichException").withParams(params).execute(context);
+	}
+	public static void response_EnrichResponseHeader(IContext context, docmosiscloud.proxies.Response _response, system.proxies.HttpResponse _httpResponse)
+	{
+		Map<java.lang.String, Object> params = new HashMap<>();
+		params.put("Response", _response == null ? null : _response.getMendixObject());
+		params.put("HttpResponse", _httpResponse == null ? null : _httpResponse.getMendixObject());
+		Core.microflowCall("DocmosisCloud.Response_EnrichResponseHeader").withParams(params).execute(context);
 	}
 	public static void response_SetValidationMessage(IContext context, java.lang.String _processName, docmosiscloud.proxies.Response _response, java.lang.String _message)
 	{

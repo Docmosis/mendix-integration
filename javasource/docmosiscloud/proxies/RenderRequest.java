@@ -27,13 +27,26 @@ public class RenderRequest extends docmosiscloud.proxies.Request
 		MailBodyHtml("MailBodyHtml"),
 		MailBodyText("MailBodyText"),
 		MailNoZipAttachments("MailNoZipAttachments"),
+		MailGatewayName("MailGatewayName"),
 		SourceId("SourceId"),
 		StylesInText("StylesInText"),
 		PasswordProtect("PasswordProtect"),
-		PdfArchiveMode("PdfArchiveMode"),
 		PdfWatermark("PdfWatermark"),
+		PdfWatermarkColor("PdfWatermarkColor"),
+		PdfWatermarkFontSize("PdfWatermarkFontSize"),
+		PdfWatermarkFontName("PdfWatermarkFontName"),
+		PdfWatermarkRotation("PdfWatermarkRotation"),
+		PdfArchiveMode("PdfArchiveMode"),
+		PdfVersion("PdfVersion"),
+		PdfUniversalAccessibility("PdfUniversalAccessibility"),
 		PdfTagged("PdfTagged"),
-		IgnoreUnknownParams("IgnoreUnknownParams"),
+		PdfSkipEmptyPages("PdfSkipEmptyPages"),
+		PdfRestrictPassword("PdfRestrictPassword"),
+		PdfRestrictPrinting("PdfRestrictPrinting"),
+		PdfRestrictEditing("PdfRestrictEditing"),
+		PdfRestrictCopy("PdfRestrictCopy"),
+		PdfRestrictAllowAccessibilty("PdfRestrictAllowAccessibilty"),
+		StrictParams("StrictParams"),
 		Tags("Tags"),
 		StreamResultInResponse("StreamResultInResponse"),
 		APIAccessKey("APIAccessKey"),
@@ -494,6 +507,42 @@ public class RenderRequest extends docmosiscloud.proxies.Request
 	}
 
 	/**
+	 * @return value of MailGatewayName
+	 */
+	public final java.lang.String getMailGatewayName()
+	{
+		return getMailGatewayName(getContext());
+	}
+
+	/**
+	 * @param context
+	 * @return value of MailGatewayName
+	 */
+	public final java.lang.String getMailGatewayName(com.mendix.systemwideinterfaces.core.IContext context)
+	{
+		return (java.lang.String) getMendixObject().getValue(context, MemberNames.MailGatewayName.toString());
+	}
+
+	/**
+	 * Set value of MailGatewayName
+	 * @param mailgatewayname
+	 */
+	public final void setMailGatewayName(java.lang.String mailgatewayname)
+	{
+		setMailGatewayName(getContext(), mailgatewayname);
+	}
+
+	/**
+	 * Set value of MailGatewayName
+	 * @param context
+	 * @param mailgatewayname
+	 */
+	public final void setMailGatewayName(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String mailgatewayname)
+	{
+		getMendixObject().setValue(context, MemberNames.MailGatewayName.toString(), mailgatewayname);
+	}
+
+	/**
 	 * @return value of SourceId
 	 */
 	public final java.lang.String getSourceId()
@@ -602,6 +651,186 @@ public class RenderRequest extends docmosiscloud.proxies.Request
 	}
 
 	/**
+	 * @return value of PdfWatermark
+	 */
+	public final java.lang.String getPdfWatermark()
+	{
+		return getPdfWatermark(getContext());
+	}
+
+	/**
+	 * @param context
+	 * @return value of PdfWatermark
+	 */
+	public final java.lang.String getPdfWatermark(com.mendix.systemwideinterfaces.core.IContext context)
+	{
+		return (java.lang.String) getMendixObject().getValue(context, MemberNames.PdfWatermark.toString());
+	}
+
+	/**
+	 * Set value of PdfWatermark
+	 * @param pdfwatermark
+	 */
+	public final void setPdfWatermark(java.lang.String pdfwatermark)
+	{
+		setPdfWatermark(getContext(), pdfwatermark);
+	}
+
+	/**
+	 * Set value of PdfWatermark
+	 * @param context
+	 * @param pdfwatermark
+	 */
+	public final void setPdfWatermark(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String pdfwatermark)
+	{
+		getMendixObject().setValue(context, MemberNames.PdfWatermark.toString(), pdfwatermark);
+	}
+
+	/**
+	 * @return value of PdfWatermarkColor
+	 */
+	public final java.lang.String getPdfWatermarkColor()
+	{
+		return getPdfWatermarkColor(getContext());
+	}
+
+	/**
+	 * @param context
+	 * @return value of PdfWatermarkColor
+	 */
+	public final java.lang.String getPdfWatermarkColor(com.mendix.systemwideinterfaces.core.IContext context)
+	{
+		return (java.lang.String) getMendixObject().getValue(context, MemberNames.PdfWatermarkColor.toString());
+	}
+
+	/**
+	 * Set value of PdfWatermarkColor
+	 * @param pdfwatermarkcolor
+	 */
+	public final void setPdfWatermarkColor(java.lang.String pdfwatermarkcolor)
+	{
+		setPdfWatermarkColor(getContext(), pdfwatermarkcolor);
+	}
+
+	/**
+	 * Set value of PdfWatermarkColor
+	 * @param context
+	 * @param pdfwatermarkcolor
+	 */
+	public final void setPdfWatermarkColor(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String pdfwatermarkcolor)
+	{
+		getMendixObject().setValue(context, MemberNames.PdfWatermarkColor.toString(), pdfwatermarkcolor);
+	}
+
+	/**
+	 * @return value of PdfWatermarkFontSize
+	 */
+	public final java.lang.Integer getPdfWatermarkFontSize()
+	{
+		return getPdfWatermarkFontSize(getContext());
+	}
+
+	/**
+	 * @param context
+	 * @return value of PdfWatermarkFontSize
+	 */
+	public final java.lang.Integer getPdfWatermarkFontSize(com.mendix.systemwideinterfaces.core.IContext context)
+	{
+		return (java.lang.Integer) getMendixObject().getValue(context, MemberNames.PdfWatermarkFontSize.toString());
+	}
+
+	/**
+	 * Set value of PdfWatermarkFontSize
+	 * @param pdfwatermarkfontsize
+	 */
+	public final void setPdfWatermarkFontSize(java.lang.Integer pdfwatermarkfontsize)
+	{
+		setPdfWatermarkFontSize(getContext(), pdfwatermarkfontsize);
+	}
+
+	/**
+	 * Set value of PdfWatermarkFontSize
+	 * @param context
+	 * @param pdfwatermarkfontsize
+	 */
+	public final void setPdfWatermarkFontSize(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Integer pdfwatermarkfontsize)
+	{
+		getMendixObject().setValue(context, MemberNames.PdfWatermarkFontSize.toString(), pdfwatermarkfontsize);
+	}
+
+	/**
+	 * @return value of PdfWatermarkFontName
+	 */
+	public final java.lang.String getPdfWatermarkFontName()
+	{
+		return getPdfWatermarkFontName(getContext());
+	}
+
+	/**
+	 * @param context
+	 * @return value of PdfWatermarkFontName
+	 */
+	public final java.lang.String getPdfWatermarkFontName(com.mendix.systemwideinterfaces.core.IContext context)
+	{
+		return (java.lang.String) getMendixObject().getValue(context, MemberNames.PdfWatermarkFontName.toString());
+	}
+
+	/**
+	 * Set value of PdfWatermarkFontName
+	 * @param pdfwatermarkfontname
+	 */
+	public final void setPdfWatermarkFontName(java.lang.String pdfwatermarkfontname)
+	{
+		setPdfWatermarkFontName(getContext(), pdfwatermarkfontname);
+	}
+
+	/**
+	 * Set value of PdfWatermarkFontName
+	 * @param context
+	 * @param pdfwatermarkfontname
+	 */
+	public final void setPdfWatermarkFontName(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String pdfwatermarkfontname)
+	{
+		getMendixObject().setValue(context, MemberNames.PdfWatermarkFontName.toString(), pdfwatermarkfontname);
+	}
+
+	/**
+	 * @return value of PdfWatermarkRotation
+	 */
+	public final java.lang.Integer getPdfWatermarkRotation()
+	{
+		return getPdfWatermarkRotation(getContext());
+	}
+
+	/**
+	 * @param context
+	 * @return value of PdfWatermarkRotation
+	 */
+	public final java.lang.Integer getPdfWatermarkRotation(com.mendix.systemwideinterfaces.core.IContext context)
+	{
+		return (java.lang.Integer) getMendixObject().getValue(context, MemberNames.PdfWatermarkRotation.toString());
+	}
+
+	/**
+	 * Set value of PdfWatermarkRotation
+	 * @param pdfwatermarkrotation
+	 */
+	public final void setPdfWatermarkRotation(java.lang.Integer pdfwatermarkrotation)
+	{
+		setPdfWatermarkRotation(getContext(), pdfwatermarkrotation);
+	}
+
+	/**
+	 * Set value of PdfWatermarkRotation
+	 * @param context
+	 * @param pdfwatermarkrotation
+	 */
+	public final void setPdfWatermarkRotation(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Integer pdfwatermarkrotation)
+	{
+		getMendixObject().setValue(context, MemberNames.PdfWatermarkRotation.toString(), pdfwatermarkrotation);
+	}
+
+	/**
 	 * @return value of PdfArchiveMode
 	 */
 	public final java.lang.Boolean getPdfArchiveMode()
@@ -638,39 +867,75 @@ public class RenderRequest extends docmosiscloud.proxies.Request
 	}
 
 	/**
-	 * @return value of PdfWatermark
+	 * @return value of PdfVersion
 	 */
-	public final java.lang.String getPdfWatermark()
+	public final java.lang.String getPdfVersion()
 	{
-		return getPdfWatermark(getContext());
+		return getPdfVersion(getContext());
 	}
 
 	/**
 	 * @param context
-	 * @return value of PdfWatermark
+	 * @return value of PdfVersion
 	 */
-	public final java.lang.String getPdfWatermark(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.String getPdfVersion(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (java.lang.String) getMendixObject().getValue(context, MemberNames.PdfWatermark.toString());
+		return (java.lang.String) getMendixObject().getValue(context, MemberNames.PdfVersion.toString());
 	}
 
 	/**
-	 * Set value of PdfWatermark
-	 * @param pdfwatermark
+	 * Set value of PdfVersion
+	 * @param pdfversion
 	 */
-	public final void setPdfWatermark(java.lang.String pdfwatermark)
+	public final void setPdfVersion(java.lang.String pdfversion)
 	{
-		setPdfWatermark(getContext(), pdfwatermark);
+		setPdfVersion(getContext(), pdfversion);
 	}
 
 	/**
-	 * Set value of PdfWatermark
+	 * Set value of PdfVersion
 	 * @param context
-	 * @param pdfwatermark
+	 * @param pdfversion
 	 */
-	public final void setPdfWatermark(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String pdfwatermark)
+	public final void setPdfVersion(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String pdfversion)
 	{
-		getMendixObject().setValue(context, MemberNames.PdfWatermark.toString(), pdfwatermark);
+		getMendixObject().setValue(context, MemberNames.PdfVersion.toString(), pdfversion);
+	}
+
+	/**
+	 * @return value of PdfUniversalAccessibility
+	 */
+	public final java.lang.Boolean getPdfUniversalAccessibility()
+	{
+		return getPdfUniversalAccessibility(getContext());
+	}
+
+	/**
+	 * @param context
+	 * @return value of PdfUniversalAccessibility
+	 */
+	public final java.lang.Boolean getPdfUniversalAccessibility(com.mendix.systemwideinterfaces.core.IContext context)
+	{
+		return (java.lang.Boolean) getMendixObject().getValue(context, MemberNames.PdfUniversalAccessibility.toString());
+	}
+
+	/**
+	 * Set value of PdfUniversalAccessibility
+	 * @param pdfuniversalaccessibility
+	 */
+	public final void setPdfUniversalAccessibility(java.lang.Boolean pdfuniversalaccessibility)
+	{
+		setPdfUniversalAccessibility(getContext(), pdfuniversalaccessibility);
+	}
+
+	/**
+	 * Set value of PdfUniversalAccessibility
+	 * @param context
+	 * @param pdfuniversalaccessibility
+	 */
+	public final void setPdfUniversalAccessibility(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Boolean pdfuniversalaccessibility)
+	{
+		getMendixObject().setValue(context, MemberNames.PdfUniversalAccessibility.toString(), pdfuniversalaccessibility);
 	}
 
 	/**
@@ -710,39 +975,255 @@ public class RenderRequest extends docmosiscloud.proxies.Request
 	}
 
 	/**
-	 * @return value of IgnoreUnknownParams
+	 * @return value of PdfSkipEmptyPages
 	 */
-	public final java.lang.Boolean getIgnoreUnknownParams()
+	public final java.lang.Boolean getPdfSkipEmptyPages()
 	{
-		return getIgnoreUnknownParams(getContext());
+		return getPdfSkipEmptyPages(getContext());
 	}
 
 	/**
 	 * @param context
-	 * @return value of IgnoreUnknownParams
+	 * @return value of PdfSkipEmptyPages
 	 */
-	public final java.lang.Boolean getIgnoreUnknownParams(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.Boolean getPdfSkipEmptyPages(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (java.lang.Boolean) getMendixObject().getValue(context, MemberNames.IgnoreUnknownParams.toString());
+		return (java.lang.Boolean) getMendixObject().getValue(context, MemberNames.PdfSkipEmptyPages.toString());
 	}
 
 	/**
-	 * Set value of IgnoreUnknownParams
-	 * @param ignoreunknownparams
+	 * Set value of PdfSkipEmptyPages
+	 * @param pdfskipemptypages
 	 */
-	public final void setIgnoreUnknownParams(java.lang.Boolean ignoreunknownparams)
+	public final void setPdfSkipEmptyPages(java.lang.Boolean pdfskipemptypages)
 	{
-		setIgnoreUnknownParams(getContext(), ignoreunknownparams);
+		setPdfSkipEmptyPages(getContext(), pdfskipemptypages);
 	}
 
 	/**
-	 * Set value of IgnoreUnknownParams
+	 * Set value of PdfSkipEmptyPages
 	 * @param context
-	 * @param ignoreunknownparams
+	 * @param pdfskipemptypages
 	 */
-	public final void setIgnoreUnknownParams(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Boolean ignoreunknownparams)
+	public final void setPdfSkipEmptyPages(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Boolean pdfskipemptypages)
 	{
-		getMendixObject().setValue(context, MemberNames.IgnoreUnknownParams.toString(), ignoreunknownparams);
+		getMendixObject().setValue(context, MemberNames.PdfSkipEmptyPages.toString(), pdfskipemptypages);
+	}
+
+	/**
+	 * @return value of PdfRestrictPassword
+	 */
+	public final java.lang.String getPdfRestrictPassword()
+	{
+		return getPdfRestrictPassword(getContext());
+	}
+
+	/**
+	 * @param context
+	 * @return value of PdfRestrictPassword
+	 */
+	public final java.lang.String getPdfRestrictPassword(com.mendix.systemwideinterfaces.core.IContext context)
+	{
+		return (java.lang.String) getMendixObject().getValue(context, MemberNames.PdfRestrictPassword.toString());
+	}
+
+	/**
+	 * Set value of PdfRestrictPassword
+	 * @param pdfrestrictpassword
+	 */
+	public final void setPdfRestrictPassword(java.lang.String pdfrestrictpassword)
+	{
+		setPdfRestrictPassword(getContext(), pdfrestrictpassword);
+	}
+
+	/**
+	 * Set value of PdfRestrictPassword
+	 * @param context
+	 * @param pdfrestrictpassword
+	 */
+	public final void setPdfRestrictPassword(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String pdfrestrictpassword)
+	{
+		getMendixObject().setValue(context, MemberNames.PdfRestrictPassword.toString(), pdfrestrictpassword);
+	}
+
+	/**
+	 * @return value of PdfRestrictPrinting
+	 */
+	public final java.lang.Integer getPdfRestrictPrinting()
+	{
+		return getPdfRestrictPrinting(getContext());
+	}
+
+	/**
+	 * @param context
+	 * @return value of PdfRestrictPrinting
+	 */
+	public final java.lang.Integer getPdfRestrictPrinting(com.mendix.systemwideinterfaces.core.IContext context)
+	{
+		return (java.lang.Integer) getMendixObject().getValue(context, MemberNames.PdfRestrictPrinting.toString());
+	}
+
+	/**
+	 * Set value of PdfRestrictPrinting
+	 * @param pdfrestrictprinting
+	 */
+	public final void setPdfRestrictPrinting(java.lang.Integer pdfrestrictprinting)
+	{
+		setPdfRestrictPrinting(getContext(), pdfrestrictprinting);
+	}
+
+	/**
+	 * Set value of PdfRestrictPrinting
+	 * @param context
+	 * @param pdfrestrictprinting
+	 */
+	public final void setPdfRestrictPrinting(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Integer pdfrestrictprinting)
+	{
+		getMendixObject().setValue(context, MemberNames.PdfRestrictPrinting.toString(), pdfrestrictprinting);
+	}
+
+	/**
+	 * @return value of PdfRestrictEditing
+	 */
+	public final java.lang.Integer getPdfRestrictEditing()
+	{
+		return getPdfRestrictEditing(getContext());
+	}
+
+	/**
+	 * @param context
+	 * @return value of PdfRestrictEditing
+	 */
+	public final java.lang.Integer getPdfRestrictEditing(com.mendix.systemwideinterfaces.core.IContext context)
+	{
+		return (java.lang.Integer) getMendixObject().getValue(context, MemberNames.PdfRestrictEditing.toString());
+	}
+
+	/**
+	 * Set value of PdfRestrictEditing
+	 * @param pdfrestrictediting
+	 */
+	public final void setPdfRestrictEditing(java.lang.Integer pdfrestrictediting)
+	{
+		setPdfRestrictEditing(getContext(), pdfrestrictediting);
+	}
+
+	/**
+	 * Set value of PdfRestrictEditing
+	 * @param context
+	 * @param pdfrestrictediting
+	 */
+	public final void setPdfRestrictEditing(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Integer pdfrestrictediting)
+	{
+		getMendixObject().setValue(context, MemberNames.PdfRestrictEditing.toString(), pdfrestrictediting);
+	}
+
+	/**
+	 * @return value of PdfRestrictCopy
+	 */
+	public final java.lang.Boolean getPdfRestrictCopy()
+	{
+		return getPdfRestrictCopy(getContext());
+	}
+
+	/**
+	 * @param context
+	 * @return value of PdfRestrictCopy
+	 */
+	public final java.lang.Boolean getPdfRestrictCopy(com.mendix.systemwideinterfaces.core.IContext context)
+	{
+		return (java.lang.Boolean) getMendixObject().getValue(context, MemberNames.PdfRestrictCopy.toString());
+	}
+
+	/**
+	 * Set value of PdfRestrictCopy
+	 * @param pdfrestrictcopy
+	 */
+	public final void setPdfRestrictCopy(java.lang.Boolean pdfrestrictcopy)
+	{
+		setPdfRestrictCopy(getContext(), pdfrestrictcopy);
+	}
+
+	/**
+	 * Set value of PdfRestrictCopy
+	 * @param context
+	 * @param pdfrestrictcopy
+	 */
+	public final void setPdfRestrictCopy(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Boolean pdfrestrictcopy)
+	{
+		getMendixObject().setValue(context, MemberNames.PdfRestrictCopy.toString(), pdfrestrictcopy);
+	}
+
+	/**
+	 * @return value of PdfRestrictAllowAccessibilty
+	 */
+	public final java.lang.Boolean getPdfRestrictAllowAccessibilty()
+	{
+		return getPdfRestrictAllowAccessibilty(getContext());
+	}
+
+	/**
+	 * @param context
+	 * @return value of PdfRestrictAllowAccessibilty
+	 */
+	public final java.lang.Boolean getPdfRestrictAllowAccessibilty(com.mendix.systemwideinterfaces.core.IContext context)
+	{
+		return (java.lang.Boolean) getMendixObject().getValue(context, MemberNames.PdfRestrictAllowAccessibilty.toString());
+	}
+
+	/**
+	 * Set value of PdfRestrictAllowAccessibilty
+	 * @param pdfrestrictallowaccessibilty
+	 */
+	public final void setPdfRestrictAllowAccessibilty(java.lang.Boolean pdfrestrictallowaccessibilty)
+	{
+		setPdfRestrictAllowAccessibilty(getContext(), pdfrestrictallowaccessibilty);
+	}
+
+	/**
+	 * Set value of PdfRestrictAllowAccessibilty
+	 * @param context
+	 * @param pdfrestrictallowaccessibilty
+	 */
+	public final void setPdfRestrictAllowAccessibilty(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Boolean pdfrestrictallowaccessibilty)
+	{
+		getMendixObject().setValue(context, MemberNames.PdfRestrictAllowAccessibilty.toString(), pdfrestrictallowaccessibilty);
+	}
+
+	/**
+	 * @return value of StrictParams
+	 */
+	public final java.lang.Boolean getStrictParams()
+	{
+		return getStrictParams(getContext());
+	}
+
+	/**
+	 * @param context
+	 * @return value of StrictParams
+	 */
+	public final java.lang.Boolean getStrictParams(com.mendix.systemwideinterfaces.core.IContext context)
+	{
+		return (java.lang.Boolean) getMendixObject().getValue(context, MemberNames.StrictParams.toString());
+	}
+
+	/**
+	 * Set value of StrictParams
+	 * @param strictparams
+	 */
+	public final void setStrictParams(java.lang.Boolean strictparams)
+	{
+		setStrictParams(getContext(), strictparams);
+	}
+
+	/**
+	 * Set value of StrictParams
+	 * @param context
+	 * @param strictparams
+	 */
+	public final void setStrictParams(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Boolean strictparams)
+	{
+		getMendixObject().setValue(context, MemberNames.StrictParams.toString(), strictparams);
 	}
 
 	/**

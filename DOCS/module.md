@@ -29,13 +29,13 @@ The module is a wrapper around the calls to the Docmosis Cloud API. These are th
 2. **Execute the request:** The data is transformed to a web service request and sent to Docmosis. The response is interpreted and in case of an error details of the error are stored in the response.
 3. **Process the response:** Extract the document and handle errors. In case of an error you will find error details, see [paragraph Generic response object attributes](#generic-response-object-attributes).
 
-The main API endpoint used for generating documents is `/render`. For full details of the Docmosis Cloud API, refer to the [Docmosis Cloud DWS3 Web Services Guide](https://resources.docmosis.com/content/documentation/cloud-dws3-web-services-guide) for details and examples.
+The main API endpoint used for generating documents is `/render`. For full details of the Docmosis Cloud API, refer to the [Docmosis Cloud DWS4 Web Services Guide](https://resources.docmosis.com/content/documentation/cloud-dws4-web-services-guide) for details and examples.
 
 > In case of errors or other unforeseen events this module does not log errors or show messages to the user. It is up to your app to decide what to do.
 
 ## Create a Template
 
-Before you can render documents you will need to create a Docmosis template.  Your Docmosis Cloud Account will contain some example templates.  You can also refer to the [Docmosis Resources Website](https://resources.docmosis.com) for more examples and in particular the [DWS3 Template Guide](https://resources.docmosis.com/content/documentation/cloud-dws3-template-guide) for detailed templating information.
+Before you can render documents you will need to create a Docmosis template.  Your Docmosis Cloud Account will contain some example templates.  You can also refer to the [Docmosis Resources Website](https://resources.docmosis.com) for more examples and in particular the [DWS4 Template Guide](https://resources.docmosis.com/content/documentation/cloud-dws4-template-guide) for detailed templating information.
 
 Use Docmosis Cloud Console to upload the template.
 
@@ -72,7 +72,7 @@ First initialize the request using microflow `RenderRequest_Initialize`:
 
 <img align="right" src="assets/render-microflows.png" alt="Render microflows">
 
-It returns an object of type `RenderRequest` and when needed the attribute values can be adjusted. In [Docmosis Cloud DWS3 Web Services Guide](https://resources.docmosis.com/content/documentation/cloud-dws3-web-services-guide) chapter 2.4 you will find a detailed explanation of all attributes.
+It returns an object of type `RenderRequest` and when needed the attribute values can be adjusted. In [Docmosis Cloud DWS4 Web Services Guide](https://resources.docmosis.com/content/documentation/cloud-dws4-web-services-guide) chapter 2.4 you will find a detailed explanation of all attributes.
 
 It is extremely flexible and powerful. To help you get started quickly here are some common use cases:
 
@@ -107,7 +107,7 @@ The `RenderResponse` object returned contains the rendered document in Base64 fo
 
 Most, if not all, request initialization microflows have these parameters in common:
 
-- `APIAccessKey`: your Docmosis access key, see the Docmosis Cloud Console [Accounts Page](https://console.dws3.docmosis.com/console/index.html#account) for the access key
+- `APIAccessKey`: your Docmosis access key, see the Docmosis DWS4 Cloud Console [Accounts Page](https://console.dws4.docmosis.com/console/index.html#account) for the access key
   - When empty then the value of constant `@DocmosisCloud.APIAccessKey` is used
 - `APIEndPoint`: the Docmosis Cloud API endpoint, see the Accounts Page for the available endpoints.  Your templates will be uploaded and exist in one specific geo region, so you must use the matching endpoint when generating documents.
   - When empty then the value of constant `@DocmosisCloud.APIEndpoint` is used
@@ -126,7 +126,7 @@ Every request has these attributes as a minimum:
 - `APIEndPoint`: the Docmosis Cloud API endpoint, see Docmosis Cloud Console for the available endpoints
 - `RequestID`: a UUID uniquely identifying a request, but you can replace this with your own value
   - In most cases this value is not used by Docmosis but can be used by your app, for example in logging
-  - When rendering a document this value can be used, for example when the document is sent by email then RequestID is added to the email's subject. See the [Docmosis Cloud DWS3 Web Services Guide](https://resources.docmosis.com/content/documentation/cloud-dws3-web-services-guide) for details.
+  - When rendering a document this value can be used, for example when the document is sent by email then RequestID is added to the email's subject. See the [Docmosis Cloud DWS4 Web Services Guide](https://resources.docmosis.com/content/documentation/cloud-dws4-web-services-guide) for details.
 
 ## Generic response object attributes
 
@@ -141,4 +141,5 @@ Every response has these attributes:
   - these attributes are set by Docmosis and contain feedback
 - `RequestID`: copied from the request object, see [Generic request object attributes](#generic-request-object-attributes)
 - `Http`: Http response details like the request URL used and technical details returned by Docmosis
+- `ResponseHeader`: All Http response headers returned by Docmosis
 - `Exception`: in case `Result=Exception` here you will find Mendix exception details, copied from the `$latestError` object

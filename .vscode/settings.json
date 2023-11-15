@@ -30,4 +30,5 @@
     "markdownlint.config": {
         "MD033": false
     },
+    "java.compile.nullAnalysis.mode": "automatic",
 }
