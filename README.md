@@ -15,7 +15,7 @@ You have complete control over where your templates are stored and where process
 We understand that Security and Reliability are essential.  Below is a summary of our [Cloud Security Measures](https://www.docmosis.com/products/cloud/security-measures.html):
 
 - Load balanced, high-performance, redundant, geographically distributed and monitored 24/7.
-- Over 99.99% uptime consistently for over 7 years.
+- Over 99.99% uptime consistently for over 10 years.
 - All communication with the Docmosis Cloud is SSL encrypted and templates and other uploaded content are stored encrypted at rest.
 
 We generate a test document every 60 seconds… view the live [Status Page](https://www.docmosis.com/status) and [Historical Uptime Statistics](https://www.docmosis.com/monitoring).

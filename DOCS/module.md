@@ -107,9 +107,9 @@ The `RenderResponse` object returned contains the rendered document in Base64 fo
 
 Most, if not all, request initialization microflows have these parameters in common:
 
-- `APIAccessKey`: your Docmosis access key, see the Docmosis DWS4 Cloud Console [Accounts Page](https://console.dws4.docmosis.com/console/index.html#account) for the access key
+- `APIAccessKey`: your Docmosis access key, see the Docmosis DWS4 Cloud Console [API page](https://console.dws4.docmosis.com/console/index.html) for the access key
   - When empty then the value of constant `@DocmosisCloud.APIAccessKey` is used
-- `APIEndPoint`: the Docmosis Cloud API endpoint, see the Accounts Page for the available endpoints.  Your templates will be uploaded and exist in one specific geo region, so you must use the matching endpoint when generating documents.
+- `APIEndPoint`: the Docmosis Cloud API endpoint, see the API Page for the available endpoints.  Your templates will be uploaded and exist in one specific geo region, so you must use the matching endpoint when generating documents.
   - When empty then the value of constant `@DocmosisCloud.APIEndpoint` is used
 
 Usually the access key or endpoint stored in the constants will be sufficient, however here are examples where you may choose to override the constants:
